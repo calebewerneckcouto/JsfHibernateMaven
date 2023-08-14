@@ -73,6 +73,21 @@ public class testeHibernate {
 	}
 	
 	
+	@Test
+	public void testedelete() {
+		DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<UsuarioPessoa>();
+	
+		UsuarioPessoa pessoa = daoGeneric.pesquisar(2L, UsuarioPessoa.class);
+		
+		daoGeneric.deletePorId(pessoa);
+		
+		
+		
+		
+	}
+	
+	
+	
 	
 
 }
