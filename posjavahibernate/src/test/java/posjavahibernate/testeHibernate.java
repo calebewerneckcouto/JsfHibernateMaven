@@ -37,5 +37,18 @@ public class testeHibernate {
 	
 	
 	
+	@Test
+	public void testeBuscar2() {
+		DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<UsuarioPessoa>();
+	
+		UsuarioPessoa pessoa = daoGeneric.pesquisar(2L, UsuarioPessoa.class);
+		
+		System.out.println(pessoa);
+		
+		
+	}
+	
+	
+	
 
 }
