@@ -23,6 +23,30 @@ public class testeHibernate {
 		daoGeneric.salvar(pessoa);
 
 	}
+	
+	@Test
+	public void testeUpdate() {
+
+		DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<UsuarioPessoa>();
+		
+		UsuarioPessoa pessoa = daoGeneric.pesquisar(1L, UsuarioPessoa.class);
+		
+		
+		pessoa.setNome("Calebe Werneck");
+		pessoa.setSobrenome("Couto");
+		
+		pessoa = daoGeneric.updateMerge(pessoa);
+		
+		System.out.println(pessoa);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	@Test
 	public void testeBuscar() {
 		DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<UsuarioPessoa>();
