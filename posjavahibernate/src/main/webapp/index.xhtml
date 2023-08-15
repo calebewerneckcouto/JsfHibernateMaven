@@ -9,6 +9,8 @@
 </h:head> <h:body>
 
 	<h:form>
+	
+	<h:messages  showDetail="true"/>
 		<h:panelGrid columns="2">
 
 
@@ -18,25 +20,25 @@
 
 
 			<h:outputLabel value="Nome:" />
-			<h:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.nome}" />
+			<h:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.nome}" required="true" requiredMessage="Informe o Nome"/>
 
 			<h:outputLabel value="Sobrenome:" />
 			<h:inputText
-				value="#{usuarioPessoaManageBean.usuarioPessoa.sobrenome}" />
+				value="#{usuarioPessoaManageBean.usuarioPessoa.sobrenome}" required="true" requiredMessage="Informe o Sobrenome" />
 
 			<h:outputLabel value="Idade:" />
-			<h:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.idade}" />
+			<h:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.idade}" required="true" requiredMessage="Informe a idade" />
 
 			<h:outputLabel value="Email:" />
-			<h:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.email}" />
+			<h:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.email}" required="true" requiredMessage="Informe o Email"/>
 
 
 			<h:outputLabel value="Login:" />
-			<h:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.login}" />
+			<h:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.login}" required="true" requiredMessage="Informe o Login"/>
 
 
 			<h:outputLabel value="Senha:" />
-			<h:inputSecret value="#{usuarioPessoaManageBean.usuarioPessoa.senha}" />
+			<h:inputSecret value="#{usuarioPessoaManageBean.usuarioPessoa.senha}" required="true" requiredMessage="Informe a Senha"/>
 
 
 		</h:panelGrid>
