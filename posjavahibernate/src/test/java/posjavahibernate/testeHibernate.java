@@ -16,11 +16,12 @@ public class testeHibernate {
 		
 		UsuarioPessoa pessoa = new UsuarioPessoa();
 		
-		pessoa.setNome("Livia");
-		pessoa.setSobrenome("Resende");
-		pessoa.setEmail("livinha@hotmail.com");
-		pessoa.setLogin("livinha");
-		pessoa.setSenha("livinha");
+		pessoa.setNome("Calebe Werneck");
+		pessoa.setSobrenome("Couto");
+		pessoa.setIdade(35);
+		pessoa.setEmail("calebewerneck@hotmail.com");
+		pessoa.setLogin("cwc3d");
+		pessoa.setSenha("cwc3d");
 		
 		daoGeneric.salvar(pessoa);
 
@@ -34,8 +35,12 @@ public class testeHibernate {
 		UsuarioPessoa pessoa = daoGeneric.pesquisar(1L, UsuarioPessoa.class);
 		
 		
-		pessoa.setNome("Calebe Werneck");
+		pessoa.setNome("Calebe");
 		pessoa.setSobrenome("Couto");
+		pessoa.setIdade(35);
+		pessoa.setEmail("calebewerneck@hotmail.com");
+		pessoa.setLogin("cwc3d");
+		pessoa.setSenha("cwc3d");
 		
 		pessoa = daoGeneric.updateMerge(pessoa);
 		
@@ -79,7 +84,7 @@ public class testeHibernate {
 	public void testedelete() {
 		DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<UsuarioPessoa>();
 	
-		UsuarioPessoa pessoa = daoGeneric.pesquisar(2L, UsuarioPessoa.class);
+		UsuarioPessoa pessoa = daoGeneric.pesquisar(1L, UsuarioPessoa.class);
 		
 		daoGeneric.deletePorId(pessoa);
 		
@@ -144,6 +149,18 @@ public class testeHibernate {
 			System.out.println(usuarioPessoa);
 			
 		}
+		
+	}
+	
+	@Test
+	public void testeQuerySomaIdade() {
+	
+		
+		DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<UsuarioPessoa>();
+		
+    Long soma = (Long) daoGeneric.getEntityManager().
+		          createQuery("select sum(u.idade) from UsuarioPessoa u ").getSingleResult();
+		System.out.println(soma);
 		
 	}
 

@@ -14,9 +14,20 @@ public class UsuarioPessoa {
 
 	private String nome;
 	private String sobrenome;
+	private Integer idade;
 	private String email;
 	private String login;
 	private String senha;
+
+	
+	
+	public Integer getIdade() {
+		return idade;
+	}
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
 
 	public Long getId() {
 		return id;
@@ -68,10 +79,9 @@ public class UsuarioPessoa {
 
 	@Override
 	public String toString() {
-		return "UsuarioPessoa [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", email=" + email
-				+ ", login=" + login + ", senha=" + senha + "]";
+		return "UsuarioPessoa [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", idade=" + idade
+				+ ", email=" + email + ", login=" + login + ", senha=" + senha + "]";
 	}
-	
-	
 
+	
 }
