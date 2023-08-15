@@ -1,17 +1,56 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<frameset>
-    <frame />
-    <frame />
-    <noframes>
-    <body>
-    <p>This page uses frames. The current browser you are using does not support frames.</p>
-    </body>
-    </noframes>
-</frameset>
-</html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"> <h:head>
+
+	<title>Sistema Financeiro Familiar</title>
+
+</h:head> <h:body>
+
+	<h:form>
+		<h:panelGrid columns="2">
+
+
+			<h:outputLabel value="ID:" />
+			<h:inputText readonly="true"
+				value="#{usuarioPessoaManageBean.usuarioPessoa.id}" />
+
+
+			<h:outputLabel value="Nome:" />
+			<h:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.nome}" />
+
+			<h:outputLabel value="Sobrenome:" />
+			<h:inputText
+				value="#{usuarioPessoaManageBean.usuarioPessoa.sobrenome}" />
+
+			<h:outputLabel value="Idade:" />
+			<h:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.idade}" />
+
+			<h:outputLabel value="Email:" />
+			<h:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.email}" />
+
+
+			<h:outputLabel value="Login:" />
+			<h:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.login}" />
+
+
+			<h:outputLabel value="Senha:" />
+			<h:inputSecret value="#{usuarioPessoaManageBean.usuarioPessoa.senha}" />
+
+
+		</h:panelGrid>
+
+		<h:commandButton value="Salvar"  action="#{usuarioPessoaManageBean.salvar}"   />
+
+	</h:form>
+
+
+
+
+
+
+
+
+
+
+</h:body> </html>
