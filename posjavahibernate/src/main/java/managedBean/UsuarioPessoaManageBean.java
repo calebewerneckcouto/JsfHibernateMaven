@@ -54,6 +54,15 @@ public class UsuarioPessoaManageBean {
 		
 		return list;
 	}
+	
+	public String remover() {
+		
+		daoGeneric.deletePorId(usuarioPessoa);
+		usuarioPessoa = new UsuarioPessoa();
+		
+		
+		return "";
+	}
 
 	
 

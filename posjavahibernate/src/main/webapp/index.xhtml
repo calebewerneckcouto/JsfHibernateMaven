@@ -112,6 +112,19 @@
 				</h:commandLink>
 
 			</h:column>
+			
+			
+			
+			
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<h:commandLink value="Delete"  action="#{usuarioPessoaManageBean.remover}" >
+				
+				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManageBean.usuarioPessoa}"/>
+				
+				</h:commandLink>
+
+			</h:column>
 
 
 
