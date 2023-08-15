@@ -40,9 +40,56 @@
 
 		</h:panelGrid>
 
-		<h:commandButton value="Salvar"  action="#{usuarioPessoaManageBean.salvar}"   />
+		<h:commandButton value="Salvar"
+			action="#{usuarioPessoaManageBean.salvar}" />
+		<h:commandButton value="Novo" action="#{usuarioPessoaManageBean.novo}" />
+
+
+		<h:dataTable value="#{usuarioPessoaManageBean.list}" var="user">
+
+			<h:column>
+				<h:outputText value="#{user.id}" />
+
+			</h:column>
+
+
+			<h:column>
+				<h:outputText value="#{user.nome}" />
+
+			</h:column>
+
+
+			<h:column>
+				<h:outputText value="#{user.sobrenome}" />
+
+			</h:column>
+
+
+			<h:column>
+				<h:outputText value="#{user.email}" />
+
+			</h:column>
+
+
+			<h:column>
+				<h:outputText value="#{user.idade}" />
+
+			</h:column>
+
+
+			<h:column>
+				<h:outputText value="#{user.login}" />
+
+			</h:column>
+
+
+
+		</h:dataTable>
+
 
 	</h:form>
+
+
 
 
 
