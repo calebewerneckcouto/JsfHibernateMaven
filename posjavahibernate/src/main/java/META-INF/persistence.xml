@@ -10,6 +10,7 @@
 	<persistence-unit name="posjavahibernate">
 	
 	<class>model.UsuarioPessoa</class>
+	<class>model.TelefoneUser</class>
 
 
 

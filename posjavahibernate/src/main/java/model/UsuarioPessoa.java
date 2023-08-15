@@ -1,9 +1,13 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class UsuarioPessoa {
@@ -19,8 +23,17 @@ public class UsuarioPessoa {
 	private String login;
 	private String senha;
 
-	
-	
+	@OneToMany(mappedBy = "usuarioPessoa", fetch = FetchType.EAGER)
+	private List<TelefoneUser> telefoneUsers;
+
+	public List<TelefoneUser> getTelefoneUsers() {
+		return telefoneUsers;
+	}
+
+	public void setTelefoneUsers(List<TelefoneUser> telefoneUsers) {
+		this.telefoneUsers = telefoneUsers;
+	}
+
 	public Integer getIdade() {
 		return idade;
 	}
@@ -80,8 +93,10 @@ public class UsuarioPessoa {
 	@Override
 	public String toString() {
 		return "UsuarioPessoa [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", idade=" + idade
-				+ ", email=" + email + ", login=" + login + ", senha=" + senha + "]";
+				+ ", email=" + email + ", login=" + login + ", senha=" + senha + ", telefoneUsers=" + telefoneUsers
+				+ "]";
 	}
 
 	
+
 }

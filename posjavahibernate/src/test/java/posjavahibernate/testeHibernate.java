@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Test;
 
 import dao.DaoGeneric;
+import model.TelefoneUser;
 import model.UsuarioPessoa;
 
 public class testeHibernate {
@@ -22,6 +23,7 @@ public class testeHibernate {
 		pessoa.setEmail("calebewerneck@hotmail.com");
 		pessoa.setLogin("cwc3d");
 		pessoa.setSenha("cwc3d");
+		
 		
 		daoGeneric.salvar(pessoa);
 
@@ -161,6 +163,24 @@ public class testeHibernate {
     Long soma = (Long) daoGeneric.getEntityManager().
 		          createQuery("select sum(u.idade) from UsuarioPessoa u ").getSingleResult();
 		System.out.println(soma);
+		
+	}
+	
+	@Test
+	public void testeGravaTelefone() {
+		
+		DaoGeneric daoGeneric = new DaoGeneric();
+		
+	UsuarioPessoa  usuarioPessoa =	(UsuarioPessoa) daoGeneric.pesquisar(4L,UsuarioPessoa.class);
+	
+	TelefoneUser telefoneUser = new TelefoneUser();
+	
+	
+	telefoneUser.setTipo("Celular");
+	telefoneUser.setNumero("986714667");
+	telefoneUser.setUsuarioPessoa(usuarioPessoa);
+	
+	daoGeneric.salvar(telefoneUser);
 		
 	}
 
