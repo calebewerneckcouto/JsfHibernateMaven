@@ -13,7 +13,7 @@
 
 
 		<p:breadCrumb>
-		<p:menuitem/>
+			<p:menuitem />
 			<p:menuitem value="Usuarios" action="index.jsf" />
 			<p:menuitem value="Cadastro" action="financeiro.jsf" />
 
@@ -47,6 +47,17 @@
 			<p:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.idade}"
 				required="true" requiredMessage="Informe a idade" />
 
+
+
+
+			<h:outputLabel value="Sexo" />
+			<h:selectOneMenu
+				value="#{usuarioPessoaManageBean.usuarioPessoa.sexo}">
+				<f:selectItem itemValue="MASCULINO" />
+				<f:selectItem itemValue="FEMINO" />
+
+			</h:selectOneMenu>
+
 			<h:outputLabel value="Email:" />
 			<p:inputText value="#{usuarioPessoaManageBean.usuarioPessoa.email}"
 				required="true" requiredMessage="Informe o Email" />
@@ -70,9 +81,12 @@
 
 		<br />
 		<br />
+	</h:form>
+
+	<h:form id="formtable">
 
 
-		<p:dataTable value="#{usuarioPessoaManageBean.list}" var="user"
+		<h:dataTable value="#{usuarioPessoaManageBean.list}" var="user"
 			cellpadding="15" border="2">
 
 			<f:facet name="header">Lista de Usuários</f:facet>
@@ -105,6 +119,9 @@
 			</h:column>
 
 
+
+
+
 			<h:column>
 				<f:facet name="header">Idade</f:facet>
 				<h:outputText value="#{user.idade}" />
@@ -129,10 +146,12 @@
 
 			<h:column>
 				<f:facet name="header">Editar</f:facet>
-				<h:commandLink value="Editar">
+				<h:commandLink immediate="true" id="botaoeditar">
 
 					<f:setPropertyActionListener value="#{user}"
 						target="#{usuarioPessoaManageBean.usuarioPessoa}" />
+						<f:ajax execute="botaoeditar"  render=":formulario" />
+						<h:graphicImage url="resources/img/editar.png"  />
 
 				</h:commandLink>
 
@@ -143,11 +162,15 @@
 
 			<h:column>
 				<f:facet name="header">Delete</f:facet>
-				<h:commandLink value="Delete"
+				<h:commandLink   id="botaoremover"
 					action="#{usuarioPessoaManageBean.remover}">
 
 					<f:setPropertyActionListener value="#{user}"
 						target="#{usuarioPessoaManageBean.usuarioPessoa}" />
+						
+						<f:ajax  execute="botaoremover"  render="@form"  />
+						
+						<h:graphicImage  url="resources/img/excluir.png"   />
 
 				</h:commandLink>
 
@@ -155,7 +178,7 @@
 
 
 
-		</p:dataTable>
+		</h:dataTable>
 
 
 	</h:form>

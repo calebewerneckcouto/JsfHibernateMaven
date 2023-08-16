@@ -22,6 +22,7 @@ public class UsuarioPessoa {
 	private String email;
 	private String login;
 	private String senha;
+	private String sexo;
 
 	@OneToMany(mappedBy = "usuarioPessoa", fetch = FetchType.EAGER)
 	private List<TelefoneUser> telefoneUsers;
@@ -66,6 +67,14 @@ public class UsuarioPessoa {
 		this.sobrenome = sobrenome;
 	}
 
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -96,7 +105,5 @@ public class UsuarioPessoa {
 				+ ", email=" + email + ", login=" + login + ", senha=" + senha + ", telefoneUsers=" + telefoneUsers
 				+ "]";
 	}
-
-	
 
 }
