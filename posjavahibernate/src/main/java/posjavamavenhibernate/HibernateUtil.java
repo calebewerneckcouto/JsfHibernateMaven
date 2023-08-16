@@ -1,4 +1,4 @@
-package posjavahibernate;
+package posjavamavenhibernate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
