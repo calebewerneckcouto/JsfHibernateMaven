@@ -27,24 +27,23 @@ public class UsuarioPessoaManagedBean {
 	private BarChartModel barCharModel = new BarChartModel();
 	private EmailUser emailuser = new EmailUser();
 	private DaoEmail<EmailUser> daoEmail = new DaoEmail<EmailUser>();
-	
+	private String campoPesquisa;
+
 	@PostConstruct
-	public void init(){
+	public void init() {
 		list = daoGeneric.listar(UsuarioPessoa.class);
-		
+
 		ChartSeries userSalario = new ChartSeries();
-		
-		
+
 		for (UsuarioPessoa usuarioPessoa : list) {
-			
-			
+
 			userSalario.set(usuarioPessoa.getNome(), usuarioPessoa.getSalario());
-			
+
 		}
 		barCharModel.addSeries(userSalario);
 		barCharModel.setTitle("Gráfico de Salários");
 	}
-	
+
 	public BarChartModel getBarCharModel() {
 		return barCharModel;
 	}
@@ -85,44 +84,62 @@ public class UsuarioPessoaManagedBean {
 
 		} catch (Exception e) {
 			if (e.getCause() instanceof org.hibernate.exception.ConstraintViolationException) {
-				FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_INFO,
-									"Informação: ", "Existem telefones para o usuario!"));
-			}else {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+						"Informação: ", "Existem telefones para o usuario!"));
+			} else {
 				e.printStackTrace();
 			}
 		}
 
 		return "";
 	}
-	
+
 	public void setEmailuser(EmailUser emailuser) {
 		this.emailuser = emailuser;
 	}
-	
+
 	public EmailUser getEmailuser() {
 		return emailuser;
 	}
-	
-	public void addEmail (){
+
+	public void addEmail() {
 		emailuser.setUsuarioPessoa(usuarioPessoa);
 		emailuser = daoEmail.updateMerge(emailuser);
 		usuarioPessoa.getEmails().add(emailuser);
 		emailuser = new EmailUser();
-		FacesContext.getCurrentInstance().addMessage(null, 
+		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Resultado..", "Salvo com sucesso!"));
 	}
-	
-	public void removerEmail() throws Exception{
-	 	String codigoemail = FacesContext.getCurrentInstance().getExternalContext()
-	 			.getRequestParameterMap().get("codigoemail");
-	 	
-	 	EmailUser remover = new EmailUser();
-	 	remover.setId(Long.parseLong(codigoemail));
+
+	public void removerEmail() throws Exception {
+		String codigoemail = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
+				.get("codigoemail");
+
+		EmailUser remover = new EmailUser();
+		remover.setId(Long.parseLong(codigoemail));
 		daoEmail.deletarPoId(remover);
 		usuarioPessoa.getEmails().remove(remover);
-		FacesContext.getCurrentInstance().addMessage(null, 
+		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Resultado..", "Removido com sucesso!"));
+	}
+	
+	
+	
+	public void pesquisar() {
+		
+		list = daoGeneric.pesquisar(campoPesquisa);
+		
+	}
+	
+	
+	
+
+	public String getCampoPesquisa() {
+		return campoPesquisa;
+	}
+
+	public void setCampoPesquisa(String campoPesquisa) {
+		this.campoPesquisa = campoPesquisa;
 	}
 
 }
