@@ -36,12 +36,11 @@ public class UsuarioPessoaManageBean {
 	}
 
 	public String salvar() {
-
 		daoGeneric.salvar(usuarioPessoa);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação:","Salvo com Sucesso!!"));
-		usuarioPessoa = new UsuarioPessoa();
-
-		return "";
+		list.add(usuarioPessoa);
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação: ", "Salvo com sucesso!"));
+		return "usuario-salvo";
 	}
 
 	public String novo() {
@@ -59,12 +58,24 @@ public class UsuarioPessoaManageBean {
 	}
 	
 	public String remover() {
-		
-		daoGeneric.deletePorId(usuarioPessoa);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação:","Removido com Sucesso!!"));
-		usuarioPessoa = new UsuarioPessoa();
-		
-		
+
+		try {
+			daoGeneric.deletePorId(usuarioPessoa);
+			list.remove(usuarioPessoa);
+			usuarioPessoa = new UsuarioPessoa();
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação: ", "Removido com sucesso!"));
+
+		} catch (Exception e) {
+			if (e.getCause() instanceof org.hibernate.exception.ConstraintViolationException) {
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO,
+									"Informação: ", "Existem telefones para o usuario!"));
+			}else {
+				e.printStackTrace();
+			}
+		}
+
 		return "";
 	}
 

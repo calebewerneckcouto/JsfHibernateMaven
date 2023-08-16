@@ -75,10 +75,13 @@
 
 		</p:panelGrid>
 
-		<p:commandButton value="Salvar"
+		<p:commandButton value="Salvar" ajax="false"
 			action="#{usuarioPessoaManageBean.salvar}" />
-		<p:commandButton value="Novo" action="#{usuarioPessoaManageBean.novo}" />
 
+		<p:commandButton value="Novo" immediate="true"
+			action="#{usuarioPessoaManagedBean.novo}">
+			<f:ajax execute="@this" render="@form" />
+		</p:commandButton>
 		<br />
 		<br />
 	</h:form>
@@ -150,8 +153,8 @@
 
 					<f:setPropertyActionListener value="#{user}"
 						target="#{usuarioPessoaManageBean.usuarioPessoa}" />
-						<f:ajax execute="botaoeditar"  render=":formulario" />
-						<h:graphicImage url="resources/img/editar.png"  />
+					<f:ajax execute="botaoeditar" render=":formulario" />
+					<h:graphicImage url="resources/img/editar.png" />
 
 				</h:commandLink>
 
@@ -162,15 +165,15 @@
 
 			<h:column>
 				<f:facet name="header">Delete</f:facet>
-				<h:commandLink   id="botaoremover"
+				<h:commandLink id="botaoremover"
 					action="#{usuarioPessoaManageBean.remover}">
 
 					<f:setPropertyActionListener value="#{user}"
 						target="#{usuarioPessoaManageBean.usuarioPessoa}" />
-						
-						<f:ajax  execute="botaoremover"  render="@form"  />
-						
-						<h:graphicImage  url="resources/img/excluir.png"   />
+
+					<f:ajax execute="botaoremover" render="@form" />
+
+					<h:graphicImage url="resources/img/excluir.png" />
 
 				</h:commandLink>
 
