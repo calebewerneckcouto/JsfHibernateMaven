@@ -3,6 +3,7 @@ package managedBean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -18,6 +19,17 @@ public class UsuarioPessoaManageBean {
 	private UsuarioPessoa usuarioPessoa = new UsuarioPessoa();
 	private DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<>();
 	private List<UsuarioPessoa> list = new ArrayList<UsuarioPessoa>();
+	
+	
+	
+	@PostConstruct
+	public void init() {
+		list = daoGeneric.listar(UsuarioPessoa.class);
+	}
+	
+	
+	
+	
 
 	public UsuarioPessoa getUsuarioPessoa() {
 		return usuarioPessoa;
@@ -27,13 +39,7 @@ public class UsuarioPessoaManageBean {
 		this.usuarioPessoa = usuarioPessoa;
 	}
 
-	public DaoGeneric<UsuarioPessoa> getDaoGeneric() {
-		return daoGeneric;
-	}
-
-	public void setDaoGeneric(DaoGeneric<UsuarioPessoa> daoGeneric) {
-		this.daoGeneric = daoGeneric;
-	}
+	
 
 	public String salvar() {
 		daoGeneric.salvar(usuarioPessoa);
