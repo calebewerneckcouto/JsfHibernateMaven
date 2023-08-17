@@ -36,6 +36,9 @@ public class UsuarioPessoa {
 	private List<TelefoneUser> telefoneUsers = new ArrayList<TelefoneUser>();
 
 	@OneToMany(mappedBy = "usuarioPessoa", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+	private List<FinanceiroUser> financeiroUsers = new ArrayList<FinanceiroUser>();
+
+	@OneToMany(mappedBy = "usuarioPessoa", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<EmailUser> emails = new ArrayList<EmailUser>();
 
 	public void setEmails(List<EmailUser> emails) {
@@ -88,6 +91,14 @@ public class UsuarioPessoa {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public List<FinanceiroUser> getFinanceiroUsers() {
+		return financeiroUsers;
+	}
+
+	public void setFinanceiroUsers(List<FinanceiroUser> financeiroUsers) {
+		this.financeiroUsers = financeiroUsers;
 	}
 
 	public void setNome(String nome) {

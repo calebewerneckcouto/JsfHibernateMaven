@@ -14,7 +14,7 @@
 		<p:breadCrumb>
 			<p:menuitem />
 			<p:menuitem value="Cadastro Usuarios" action="index.jsf" />
-			<p:menuitem value="Financeiro" action="primefaces.jsf" />
+			
 
 		</p:breadCrumb>
 	</h:form>
@@ -160,6 +160,21 @@
 					<f:param name="codigouser" value="#{user.id}" />
 				</h:commandLink>
 			</p:column>
+			
+			
+			
+			<p:column headerText="Financeiro">
+				<h:commandLink immediate="true" action="financeiro.jsf" id="botaofinanceiro">
+					<h:graphicImage url="resources/img/.png" width="25"
+						height="25" />
+					<f:param name="codigouser" value="#{user.id}" />
+				</h:commandLink>
+			</p:column>
+			
+			
+			
+			
+			
 
 			<p:column headerText="E-mails">
 				<p:commandLink update=":formtable:dialogEmail"

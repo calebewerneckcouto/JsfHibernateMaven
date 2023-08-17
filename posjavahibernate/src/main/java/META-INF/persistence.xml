@@ -8,11 +8,11 @@
 
 
 	<persistence-unit name="posjavahibernate">
-	
-	<class>model.UsuarioPessoa</class>
-	<class>model.TelefoneUser</class>
-	<class>model.EmailUser</class>
 
+		<class>model.UsuarioPessoa</class>
+		<class>model.TelefoneUser</class>
+		<class>model.EmailUser</class>
+		<class>model.FinanceiroUser</class>
 
 
 		<properties>
@@ -28,7 +28,7 @@
 			<property name="hibernate.connection.username"
 				value="postgres" />
 			<property name="hibernate.connection.password" value="admin" />
-			<property name="hibernate.format_sql" value="false"/>
+			<property name="hibernate.format_sql" value="false" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 
 
