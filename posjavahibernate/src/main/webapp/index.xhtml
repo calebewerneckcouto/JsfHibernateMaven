@@ -92,7 +92,7 @@
       <h:outputLabel value="Nome:"  />
       <p:inputText value="#{usuarioPessoaManagedBean.campoPesquisa}"  />
       
-      <p:commandButton value="Buscar"  actionListener="#{usuarioPessoaManagedBean.pesquisar}"  update="formtable" />
+      <p:commandButton value="Buscar"  actionListener="#{usuarioPessoaManagedBean.pesquisar}"  update="formtable, :graficosalario" />
       
       
       
@@ -212,7 +212,7 @@
 
 	</h:form>
 
-	<p:chart type="bar" model="#{usuarioPessoaManagedBean.barCharModel}" />
+	<p:chart type="bar" model="#{usuarioPessoaManagedBean.barCharModel}" id="graficosalario"/>
 
 
 </h:body>

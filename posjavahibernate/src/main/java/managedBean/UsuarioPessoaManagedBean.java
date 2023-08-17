@@ -32,6 +32,11 @@ public class UsuarioPessoaManagedBean {
 	@PostConstruct
 	public void init() {
 		list = daoGeneric.listar(UsuarioPessoa.class);
+		montarGrafico();
+	}
+
+	private void montarGrafico() {
+		barCharModel =  new BarChartModel();
 
 		ChartSeries userSalario = new ChartSeries();
 
@@ -128,6 +133,7 @@ public class UsuarioPessoaManagedBean {
 	public void pesquisar() {
 		
 		list = daoGeneric.pesquisar(campoPesquisa);
+		montarGrafico();
 		
 	}
 	
