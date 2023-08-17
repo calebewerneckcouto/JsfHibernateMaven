@@ -13,7 +13,7 @@
 		<p:breadCrumb>
 			<p:menuitem />
 			<p:menuitem value="Cadastro Usuarios" action="index.jsf" />
-			<p:menuitem value="Financeiro" action="primefaces.jsf" />
+			
 
 		</p:breadCrumb>
 	</h:form>
@@ -29,22 +29,29 @@
 			
 			
 			<p:outputLabel>Data: </p:outputLabel>
-			<p:inputText value="#{financeiroManagedBean.financeiroUser.data}" />
+			<p:inputText value="#{financeiroManagedBean.financeiroUser.data}" required="true" requiredMessage="Informe a Data"/>
 			
 			
 			<p:outputLabel>Descrição: </p:outputLabel>
-			<p:inputText value="#{financeiroManagedBean.financeiroUser.descricao}" />
+			<p:inputText value="#{financeiroManagedBean.financeiroUser.descricao}" required="true" requiredMessage="Informe a Descrição" />
 			
 			
 			<p:outputLabel>Valor: </p:outputLabel>
-			<p:inputText value="#{financeiroManagedBean.financeiroUser.valor}" />
+			<p:inputText value="#{financeiroManagedBean.financeiroUser.valor}" required="true"  requiredMessage="Informe o Valor"/>
 			
              
              
-             <p:outputLabel>Status: </p:outputLabel>
-			<p:inputText value="#{financeiroManagedBean.financeiroUser.status}" />
-			
-			
+            
+						<p:outputLabel>Status:</p:outputLabel>
+			<p:selectOneMenu
+				value="#{financeiroManagedBean.financeiroUser.status}"  required="true"  requiredMessage="Selecione uma opção"    >
+				<f:selectItem itemValue="Cartão de Crédito" itemLabel="Cartão de Crédito" />
+				<f:selectItem itemValue="Cartão de Débito" itemLabel="Cartão de Débito" />
+				<f:selectItem itemValue="Pix" itemLabel="Pix" />
+				<f:selectItem itemValue="Dinheiro" itemLabel="Dinheiro" />
+				<f:selectItem itemValue="Cartão Alelo Refeição" itemLabel="Cartão Alelo Refeição" />
+				<f:selectItem itemValue="Cartão Alelo Alimentação" itemLabel="Cartão Alelo Alimentação" />
+			</p:selectOneMenu>
 			
 			
 			
@@ -87,11 +94,11 @@
 				<h:outputText value="#{financeiro.valor}" />
 			</p:column>
 			
+			
 			<p:column style="width:150px;">
 				<f:facet name="header">Status</f:facet>
 				<h:outputText value="#{financeiro.status}" />
 			</p:column>
-			
 			
 			
 			
@@ -108,7 +115,7 @@
 				<f:facet name="header">Delete</f:facet>
 				<h:commandLink immediate="true"
 					action="#{financeiroManagedBean.removeFinanceiro}" id="botaoremover">
-					<h:graphicImage url="resources/img/.png" width="25"
+					<h:graphicImage url="resources/img/excluir.png" width="25"
 						height="25" />
 					<f:setPropertyActionListener value="#{financeiro}"
 						target="#{financeiroManagedBean.financeiroUser}" />
