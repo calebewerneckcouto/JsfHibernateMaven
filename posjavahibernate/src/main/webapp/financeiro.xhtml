@@ -30,8 +30,16 @@
 
 			<p:outputLabel>Data: </p:outputLabel>
 
-			<b:datepicker   locale="en"       value="#{financeiroManagedBean.financeiroUser.data}"
-				required="true" requiredMessage="Informe a Data" />
+			<b:datepicker locale="pt_BR" id="data"
+				value="#{financeiroManagedBean.financeiroUser.data}" required="true"
+				requiredMessage="Informe a Data" timeZone="GMT-03:00">
+
+
+
+			</b:datepicker>
+
+
+
 
 
 			<p:outputLabel>Status:</p:outputLabel>
@@ -58,13 +66,24 @@
 			<p:inputText
 				value="#{financeiroManagedBean.financeiroUser.descricao}"
 				required="true" requiredMessage="Informe a Descrição" />
-				
-				
 
 
-			<p:outputLabel>Valor: </p:outputLabel>
-			<p:inputText value="#{financeiroManagedBean.financeiroUser.valor}"
-				required="true" requiredMessage="Informe o Valor" />
+
+
+			<p:outputLabel for="valorInput">Valor:</p:outputLabel>
+			<p:inputText id="valorInput"
+				value="#{financeiroManagedBean.financeiroUser.valor}"
+				required="true" requiredMessage="Informe o Valor">
+
+
+
+
+
+
+			</p:inputText>
+
+
+
 
 
 
@@ -79,6 +98,19 @@
 
 		<p:commandButton value="Salvar"
 			action="#{financeiroManagedBean.salvar}" ajax="false"></p:commandButton>
+			
+			
+			<p:commandButton value="Novo" immediate="true"
+			action="#{financeiroManagedBean.novo}">
+			<f:ajax execute="@this" render="@form" />
+		</p:commandButton>
+
+			
+			
+			
+			
+			
+			
 
 	</h:form>
 
@@ -143,5 +175,7 @@
 	</h:form>
 
 </h:body>
+
+
 
 </html>

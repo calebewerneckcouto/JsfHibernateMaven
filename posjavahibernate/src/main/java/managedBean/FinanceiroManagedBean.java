@@ -1,10 +1,18 @@
 package managedBean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
+
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
 
 import dao.DaoFinanceiro;
 import dao.DaoUsuario;
@@ -20,16 +28,31 @@ public class FinanceiroManagedBean {
 	private DaoFinanceiro<FinanceiroUser> daoFinanceiro = new DaoFinanceiro<FinanceiroUser>();
 
 	private FinanceiroUser financeiroUser = new FinanceiroUser();
+	private BarChartModel barChartModel = new BarChartModel();
+	private List<UsuarioPessoa> list = new ArrayList<UsuarioPessoa>();
+	private DaoUsuario<UsuarioPessoa> daoGeneric = new DaoUsuario<UsuarioPessoa>();
 
 	@PostConstruct
 	public void init() {
-
+		list = daoGeneric.listar(UsuarioPessoa.class);
 		String coduser = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
 				.get("codigouser");
 		user = daoUser.pesquisar(Long.parseLong(coduser), UsuarioPessoa.class);
 
-	}
+		
 
+	}
+	
+	
+	public String novo() {
+		
+		financeiroUser = new FinanceiroUser();
+		
+		return "";
+	}
+	
+	
+	
 	public String salvar() {
 		financeiroUser.setUsuarioPessoa(user);
 		daoFinanceiro.salvar(financeiroUser);
@@ -83,4 +106,29 @@ public class FinanceiroManagedBean {
 		return user;
 	}
 
+	public BarChartModel getBarChartModel() {
+		return barChartModel;
+	}
+
+	public void setBarChartModel(BarChartModel barChartModel) {
+		this.barChartModel = barChartModel;
+	}
+
+	public List<UsuarioPessoa> getList() {
+		return list;
+	}
+
+	public void setList(List<UsuarioPessoa> list) {
+		this.list = list;
+	}
+
+	public DaoUsuario<UsuarioPessoa> getDaoGeneric() {
+		return daoGeneric;
+	}
+
+	public void setDaoGeneric(DaoUsuario<UsuarioPessoa> daoGeneric) {
+		this.daoGeneric = daoGeneric;
+	}
+
+	
 }

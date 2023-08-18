@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,14 +10,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class FinanceiroUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(nullable = false)
-	private String data;
+    @Temporal(TemporalType.DATE)
+	private Date data;
+
 	@Column(nullable = false)
 	private String descricao;
 	@Column(nullable = false)
@@ -24,8 +28,18 @@ public class FinanceiroUser {
 	@Column(nullable = false)
 	private String status;
 
+	private Double gastos;
+
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	private UsuarioPessoa usuarioPessoa;
+
+	public Double getGastos() {
+		return gastos;
+	}
+
+	public void setGastos(Double gastos) {
+		this.gastos = gastos;
+	}
 
 	public Long getId() {
 		return id;
@@ -33,14 +47,6 @@ public class FinanceiroUser {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getData() {
-		return data;
-	}
-
-	public void setData(String data) {
-		this.data = data;
 	}
 
 	public String getDescricao() {
@@ -75,6 +81,14 @@ public class FinanceiroUser {
 		this.usuarioPessoa = usuarioPessoa;
 	}
 
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -95,7 +109,7 @@ public class FinanceiroUser {
 	@Override
 	public String toString() {
 		return "FinanceiroUser [id=" + id + ", data=" + data + ", descricao=" + descricao + ", valor=" + valor
-				+ ", status=" + status + ", usuarioPessoa=" + usuarioPessoa + "]";
+				+ ", status=" + status + ", gastos=" + gastos + ", usuarioPessoa=" + usuarioPessoa + "]";
 	}
 
 }
