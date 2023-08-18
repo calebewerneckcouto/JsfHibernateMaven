@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
 </h:head>
@@ -13,7 +13,7 @@
 		<p:breadCrumb>
 			<p:menuitem />
 			<p:menuitem value="Cadastro Usuarios" action="index.jsf" />
-			
+
 
 		</p:breadCrumb>
 	</h:form>
@@ -25,46 +25,60 @@
 
 			<p:outputLabel>Usuario: </p:outputLabel>
 			<p:outputLabel value="#{financeiroManagedBean.user.nome}" />
-			
-			
-			
+
+
+
 			<p:outputLabel>Data: </p:outputLabel>
-			<p:inputText value="#{financeiroManagedBean.financeiroUser.data}" required="true" requiredMessage="Informe a Data"/>
-			
-			
-			<p:outputLabel>Descrição: </p:outputLabel>
-			<p:inputText value="#{financeiroManagedBean.financeiroUser.descricao}" required="true" requiredMessage="Informe a Descrição" />
-			
-			
-			<p:outputLabel>Valor: </p:outputLabel>
-			<p:inputText value="#{financeiroManagedBean.financeiroUser.valor}" required="true"  requiredMessage="Informe o Valor"/>
-			
-             
-             
-            
-						<p:outputLabel>Status:</p:outputLabel>
+
+			<b:datepicker   locale="en"       value="#{financeiroManagedBean.financeiroUser.data}"
+				required="true" requiredMessage="Informe a Data" />
+
+
+			<p:outputLabel>Status:</p:outputLabel>
 			<p:selectOneMenu
-				value="#{financeiroManagedBean.financeiroUser.status}"  required="true"  requiredMessage="Selecione uma opção"    >
-				<f:selectItem itemValue="Cartão de Crédito" itemLabel="Cartão de Crédito" />
-				<f:selectItem itemValue="Cartão de Débito" itemLabel="Cartão de Débito" />
+				value="#{financeiroManagedBean.financeiroUser.status}"
+				required="true" requiredMessage="Selecione uma opção">
+				<f:selectItem itemValue="Cartão de Crédito"
+					itemLabel="Cartão de Crédito" />
+				<f:selectItem itemValue="Cartão de Débito"
+					itemLabel="Cartão de Débito" />
 				<f:selectItem itemValue="Pix" itemLabel="Pix" />
 				<f:selectItem itemValue="Dinheiro" itemLabel="Dinheiro" />
-				<f:selectItem itemValue="Cartão Alelo Refeição" itemLabel="Cartão Alelo Refeição" />
-				<f:selectItem itemValue="Cartão Alelo Alimentação" itemLabel="Cartão Alelo Alimentação" />
+				<f:selectItem itemValue="Cartão Alelo Refeição"
+					itemLabel="Cartão Alelo Refeição" />
+				<f:selectItem itemValue="Cartão Alelo Alimentação"
+					itemLabel="Cartão Alelo Alimentação" />
 			</p:selectOneMenu>
-			
-			
-			
-			
 
 
-			
+
+
+
+			<p:outputLabel>Descrição: </p:outputLabel>
+			<p:inputText
+				value="#{financeiroManagedBean.financeiroUser.descricao}"
+				required="true" requiredMessage="Informe a Descrição" />
+				
+				
+
+
+			<p:outputLabel>Valor: </p:outputLabel>
+			<p:inputText value="#{financeiroManagedBean.financeiroUser.valor}"
+				required="true" requiredMessage="Informe o Valor" />
+
+
+
+
+
+
+
+
 		</h:panelGrid>
 		<br />
 		<br />
 
-		<p:commandButton value="Salvar" action="#{financeiroManagedBean.salvar}"
-			ajax="false"></p:commandButton>
+		<p:commandButton value="Salvar"
+			action="#{financeiroManagedBean.salvar}" ajax="false"></p:commandButton>
 
 	</h:form>
 
@@ -76,45 +90,47 @@
 				<f:facet name="header">Id</f:facet>
 				<h:outputText value="#{financeiro.id}" />
 			</p:column>
-			
-			
+
+
 			<p:column style="width:150px;">
 				<f:facet name="header">Data</f:facet>
+
 				<h:outputText value="#{financeiro.data}" />
 			</p:column>
-			
+
 			<p:column style="width:150px;">
 				<f:facet name="header">Descrição</f:facet>
 				<h:outputText value="#{financeiro.descricao}" />
 			</p:column>
-			
-			
+
+
 			<p:column style="width:150px;">
 				<f:facet name="header">Valor</f:facet>
 				<h:outputText value="#{financeiro.valor}" />
 			</p:column>
-			
-			
+
+
 			<p:column style="width:150px;">
 				<f:facet name="header">Status</f:facet>
 				<h:outputText value="#{financeiro.status}" />
 			</p:column>
-			
-			
-			
-			
-			
-			
-			
-			
 
-			
+
+
+
+
+
+
+
+
+
 
 
 			<p:column>
 				<f:facet name="header">Delete</f:facet>
 				<h:commandLink immediate="true"
-					action="#{financeiroManagedBean.removeFinanceiro}" id="botaoremover">
+					action="#{financeiroManagedBean.removeFinanceiro}"
+					id="botaoremover">
 					<h:graphicImage url="resources/img/excluir.png" width="25"
 						height="25" />
 					<f:setPropertyActionListener value="#{financeiro}"
