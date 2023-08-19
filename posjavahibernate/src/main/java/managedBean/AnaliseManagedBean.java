@@ -81,15 +81,6 @@ public class AnaliseManagedBean {
 
 	
 	
-	public void mudanome() {
-		
-		
-		financeiroUser.setNome(user.getNome());
-		
-	
-		
-		
-	}
 	
 	
 

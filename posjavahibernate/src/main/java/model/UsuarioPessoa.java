@@ -101,8 +101,8 @@ public class UsuarioPessoa {
 		this.financeiroUsers = financeiroUsers;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public String setNome(String nome) {
+		return this.nome = nome;
 	}
 
 	public String getSobrenome() {

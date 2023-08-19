@@ -33,7 +33,7 @@ public class FinanceiroManagedBean {
 	private List<UsuarioPessoa> list = new ArrayList<UsuarioPessoa>();
 	
 	private DaoUsuario<UsuarioPessoa> daoGeneric = new DaoUsuario<UsuarioPessoa>();
-	
+	private String recebe;
 
 	@PostConstruct
 	public void init() {
@@ -43,7 +43,17 @@ public class FinanceiroManagedBean {
 				.get("codigouser");
 		user = daoUser.pesquisar(Long.parseLong(coduser), UsuarioPessoa.class);
 		
-
+        
+      recebe =  financeiroUser.setNome(user.getNome());
+      
+     
+       
+        
+        
+        
+        
+        
+      
 		
 
 	}
