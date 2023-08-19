@@ -29,6 +29,8 @@
 
 				<p:selectOneMenu value="#{analiseManagedBean.campoPesquisa}"
 					required="true" requiredMessage="Selecione uma opção">
+					
+					
 					<f:selectItem itemValue="Cartão de Crédito"
 						itemLabel="Cartão de Crédito" />
 					<f:selectItem itemValue="Cartão de Débito"
@@ -49,6 +51,14 @@
 				<p:commandButton value="Buscar"
 					actionListener="#{analiseManagedBean.pesquisar}"
 					update="formAnalise" />
+					
+					
+				<p:commandButton value="Recarregar"
+					actionListener="#{analiseManagedBean.recarregar}"
+					update="formAnalise" />
+					
+				
+					
 
 
 

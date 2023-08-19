@@ -36,6 +36,12 @@ public class AnaliseManagedBean {
 	}
 	
 	
+	
+	public void recarregar() {
+		lista = daoFinanceiro.listar(FinanceiroUser.class);
+	}
+	
+	
 public void pesquisar() {
 		
 		lista = daoFinanceiro.pesquisar(campoPesquisa);
