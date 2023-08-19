@@ -66,6 +66,7 @@ public class UsuarioPessoaManagedBean {
 		list.add(usuarioPessoa);
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação: ", "Salvo com sucesso!"));
+		montarGrafico();
 		return "usuario-salvo";
 	}
 
@@ -83,9 +84,11 @@ public class UsuarioPessoaManagedBean {
 		try {
 			daoGeneric.removerUsuario(usuarioPessoa);
 			list.remove(usuarioPessoa);
+			montarGrafico();
 			usuarioPessoa = new UsuarioPessoa();
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação: ", "Removido com sucesso!"));
+			montarGrafico();
 
 		} catch (Exception e) {
 			if (e.getCause() instanceof org.hibernate.exception.ConstraintViolationException) {

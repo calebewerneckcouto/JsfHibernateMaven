@@ -18,28 +18,18 @@ public class FinanceiroUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-    @Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.DATE)
 	private Date data;
 
 	@Column(nullable = false)
 	private String descricao;
 	@Column(nullable = false)
-	private String valor;
+	private Double valor;
 	@Column(nullable = false)
 	private String status;
 
-	private Double gastos;
-
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	private UsuarioPessoa usuarioPessoa;
-
-	public Double getGastos() {
-		return gastos;
-	}
-
-	public void setGastos(Double gastos) {
-		this.gastos = gastos;
-	}
 
 	public Long getId() {
 		return id;
@@ -55,14 +45,6 @@ public class FinanceiroUser {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public String getValor() {
-		return valor;
-	}
-
-	public void setValor(String valor) {
-		this.valor = valor;
 	}
 
 	public String getStatus() {
@@ -89,6 +71,14 @@ public class FinanceiroUser {
 		this.data = data;
 	}
 
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -109,7 +99,7 @@ public class FinanceiroUser {
 	@Override
 	public String toString() {
 		return "FinanceiroUser [id=" + id + ", data=" + data + ", descricao=" + descricao + ", valor=" + valor
-				+ ", status=" + status + ", gastos=" + gastos + ", usuarioPessoa=" + usuarioPessoa + "]";
+				+ ", status=" + status + ", usuarioPessoa=" + usuarioPessoa + "]";
 	}
 
 }

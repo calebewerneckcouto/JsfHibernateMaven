@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui" 
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
 </h:head>
@@ -14,31 +13,104 @@
 		<p:breadCrumb>
 			<p:menuitem />
 			<p:menuitem value="Cadastro Usuarios" action="index.jsf" />
-			<p:menuitem value="Análise Financeira Individual" action="analise.jsf" />
+			<p:menuitem value="Análise Financeira Individual"
+				action="analise.jsf" />
 
 		</p:breadCrumb>
 	</h:form>
 
-	<h:form id="formulario">
-		<p:messages showDetail="true" showSummary="false" id="msg" />
+	<h:form>
+		<p:panel header="Consultar Gastos">
 
-		<h:panelGrid columns="2">
-
-			
-
-
-			
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Pesquisa Gastos:" />
 
 
-		</h:panelGrid>
-		<br />
-		<br />
 
-		
+				<p:selectOneMenu value="#{analiseManagedBean.campoPesquisa}"
+					required="true" requiredMessage="Selecione uma opção">
+					<f:selectItem itemValue="Cartão de Crédito"
+						itemLabel="Cartão de Crédito" />
+					<f:selectItem itemValue="Cartão de Débito"
+						itemLabel="Cartão de Débito" />
+					<f:selectItem itemValue="Pix" itemLabel="Pix" />
+					<f:selectItem itemValue="Dinheiro" itemLabel="Dinheiro" />
+					<f:selectItem itemValue="Cartão Alelo Refeição"
+						itemLabel="Cartão Alelo Refeição" />
+					<f:selectItem itemValue="Cartão Alelo Alimentação"
+						itemLabel="Cartão Alelo Alimentação" />
+				</p:selectOneMenu>
+
+
+
+
+
+
+				<p:commandButton value="Buscar"
+					actionListener="#{analiseManagedBean.pesquisar}"
+					update="formAnalise" />
+
+
+
+
+
+
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+	<h:form id="formAnalise">
+		<p:dataTable value="#{analiseManagedBean.lista}" var="financeiro"
+			id="tabelAnalise">
+
+			<p:column style="width:150px;">
+				<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{financeiro.id}" />
+			</p:column>
+
+
+
+			<p:column style="width:150px;">
+				<f:facet name="header">Data</f:facet>
+
+				<h:outputText value="#{financeiro.data}" />
+			</p:column>
+
+			<p:column style="width:150px;">
+				<f:facet name="header">Descrição</f:facet>
+				<h:outputText value="#{financeiro.descricao}" />
+			</p:column>
+
+
+			<p:column style="width:150px;">
+				<f:facet name="header">Valor</f:facet>
+				<h:outputText value="#{financeiro.valor}" />
+			</p:column>
+
+
+
+
+
+
+
+
+
+			<p:column style="width:150px;">
+				<f:facet name="header">Status</f:facet>
+				<h:outputText value="#{financeiro.status}" />
+			</p:column>
+
+
+
+
+		</p:dataTable>
+
+
+
+
 	</h:form>
 
-	
-
 </h:body>
+
+
 
 </html>

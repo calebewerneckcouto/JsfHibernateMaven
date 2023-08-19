@@ -30,10 +30,13 @@ public class FinanceiroManagedBean {
 	private FinanceiroUser financeiroUser = new FinanceiroUser();
 	private BarChartModel barChartModel = new BarChartModel();
 	private List<UsuarioPessoa> list = new ArrayList<UsuarioPessoa>();
+	
 	private DaoUsuario<UsuarioPessoa> daoGeneric = new DaoUsuario<UsuarioPessoa>();
+	
 
 	@PostConstruct
 	public void init() {
+		
 		list = daoGeneric.listar(UsuarioPessoa.class);
 		String coduser = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
 				.get("codigouser");
@@ -129,6 +132,10 @@ public class FinanceiroManagedBean {
 	public void setDaoGeneric(DaoUsuario<UsuarioPessoa> daoGeneric) {
 		this.daoGeneric = daoGeneric;
 	}
+
+
+		
+	
 
 	
 }
