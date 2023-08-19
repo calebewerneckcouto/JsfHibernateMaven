@@ -63,6 +63,7 @@ public class FinanceiroManagedBean {
 		
 		financeiroUser = new FinanceiroUser();
 		
+		
 		return "";
 	}
 	
@@ -71,14 +72,17 @@ public class FinanceiroManagedBean {
 	public String salvar() {
 		financeiroUser.setUsuarioPessoa(user);
 		daoFinanceiro.salvar(financeiroUser);
+		
 		financeiroUser = new FinanceiroUser();
+		
 		user = daoUser.pesquisar(user.getId(), UsuarioPessoa.class);
 	
-		
+		recebe =  financeiroUser.setNome(user.getNome());
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação: ", "Salvo com sucesso!"));
-
+		
 		return "";
+		
 	}
 	
 	
@@ -105,10 +109,12 @@ public class FinanceiroManagedBean {
 
 		daoFinanceiro.deletarPoId(financeiroUser);
 		
+		
 		user = daoUser.pesquisar(user.getId(), UsuarioPessoa.class);
 		financeiroUser = new FinanceiroUser();
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação: ", "Dados Removido!"));
+		
 		return "";
 	}
 
