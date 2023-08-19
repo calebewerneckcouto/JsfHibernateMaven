@@ -20,9 +20,7 @@ public class FinanceiroUser {
 	private Long id;
 	@Temporal(TemporalType.DATE)
 	private Date data;
-	@Column(nullable = false)
-	private String nome;
-
+	
 	@Column(nullable = false)
 	private String descricao;
 	@Column(nullable = false)
@@ -37,15 +35,7 @@ public class FinanceiroUser {
 		return id;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public void setId(Long id) {
+		public void setId(Long id) {
 		this.id = id;
 	}
 

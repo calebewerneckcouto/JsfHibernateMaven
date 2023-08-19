@@ -1,5 +1,6 @@
 package managedBean;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,12 +72,29 @@ public class FinanceiroManagedBean {
 	}
 	
 	
-	
+	public double getTotalGastos() {
+		
+		List<FinanceiroUser> financeiroUsers = user.getFinanceiroUsers();
+		
+		double total = 0.0;
+		
+		
+		for(FinanceiroUser financeiro : financeiroUsers) {
+			total += financeiro.getValor();
+		}
+		
+		
+		
+		
+		
+		return total;
+	}
 	
 
 	public String removeFinanceiro() throws Exception {
 
 		daoFinanceiro.deletarPoId(financeiroUser);
+		
 		user = daoUser.pesquisar(user.getId(), UsuarioPessoa.class);
 		financeiroUser = new FinanceiroUser();
 		FacesContext.getCurrentInstance().addMessage(null,

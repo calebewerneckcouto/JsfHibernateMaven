@@ -29,8 +29,8 @@
 
 				<p:selectOneMenu value="#{analiseManagedBean.campoPesquisa}"
 					required="true" requiredMessage="Selecione uma opção">
-					
-					
+
+
 					<f:selectItem itemValue="Cartão de Crédito"
 						itemLabel="Cartão de Crédito" />
 					<f:selectItem itemValue="Cartão de Débito"
@@ -51,14 +51,14 @@
 				<p:commandButton value="Buscar"
 					actionListener="#{analiseManagedBean.pesquisar}"
 					update="formAnalise" />
-					
-					
+
+
 				<p:commandButton value="Recarregar"
 					actionListener="#{analiseManagedBean.recarregar}"
 					update="formAnalise" />
-					
-				
-					
+
+
+
 
 
 
@@ -76,15 +76,11 @@
 				<f:facet name="header">Id</f:facet>
 				<h:outputText value="#{financeiro.id}" />
 			</p:column>
-			
-			
-			
-			<p:column style="width:150px;">
-				<f:facet name="header">Nome</f:facet>
-				<h:outputText value="#{financeiro.nome}" />
-			</p:column>
 
-			
+
+
+
+
 
 
 
@@ -128,8 +124,32 @@
 
 	</h:form>
 
-</h:body>
+	<h:form id="formgastos">
 
+		<p:dataTable value="#{analiseManagedBean}" var="analise">
+
+			<p:column style="width:150px;">
+				<f:facet name="header">Total Gastos</f:facet>
+				<h:outputText value="#{analise.totalGastos}" />
+			</p:column>
+
+
+
+
+		</p:dataTable>
+
+
+
+
+
+	</h:form>
+
+
+<p:chart type="bar" model="#{analiseManagedBean.barChartModel}"
+	id="graficogastos" />
+
+
+</h:body>
 
 
 </html>

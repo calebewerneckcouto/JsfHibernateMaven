@@ -8,26 +8,10 @@
 <h:head>
 </h:head>
 
-<SCRIPT type="text/javascript">
-
-
-function onPageLoad(){
-	
-	var usuario = document.getEmentById('formulario:usuario');
-	var nomeinput = usuario.textContent;
-
-	var nome = document.getEmentById('formulario:nome');
-	nome.value = nomeinput;
-
-	
-}
-
-
-</SCRIPT>
 
 
 
-<h:body onload="onPageLoad()"   >
+<h:body    >
 	<h:form>
 		<p:breadCrumb>
 			<p:menuitem />
@@ -46,8 +30,6 @@ function onPageLoad(){
 			<p:outputLabel>Usuario: </p:outputLabel>
 			<p:outputLabel id="usuario"   value="#{financeiroManagedBean.user.nome}" />
 			
-			<p:outputLabel>Nome: </p:outputLabel>
-			<p:inputText  id="nome"   value="#{financeiroManagedBean.financeiroUser.nome}" />
 			
 			
 			
@@ -149,10 +131,6 @@ function onPageLoad(){
 				<h:outputText value="#{financeiro.id}" />
 			</p:column>
 			
-			<p:column style="width:150px;">
-				<f:facet name="header">Nome</f:facet>
-				<h:outputText value="#{financeiro.nome}" />
-			</p:column>
 			
 			
 			
@@ -198,18 +176,46 @@ function onPageLoad(){
 			<p:column>
 				<f:facet name="header">Delete</f:facet>
 				<h:commandLink immediate="true"
-					action="#{financeiroManagedBean.removeFinanceiro}"
+					action="#{financeiroManagedBean.removeFinanceiro}"  
 					id="botaoremover">
 					<h:graphicImage url="resources/img/excluir.png" width="25"
 						height="25" />
 					<f:setPropertyActionListener value="#{financeiro}"
 						target="#{financeiroManagedBean.financeiroUser}" />
-					<f:ajax execute="botaoremover" render="@form :formulario:msg" />
+					<f:ajax execute="botaoremover" render="@form :formulario:msg formtotal"  />
 				</h:commandLink>
 			</p:column>
 
 		</p:dataTable>
 	</h:form>
+	
+	
+	
+	<h:form id="formtotal">
+	
+
+	
+	<p:dataTable value="#{financeiroManagedBean}"  var="financeiro"
+			id="tabelFinanceiro">
+
+			<p:column style="width:150px;">
+				<f:facet name="header">Total Gastos</f:facet>
+				<h:outputText value="#{financeiro.totalGastos}" />
+			</p:column>
+	
+	
+	
+	
+	
+	</p:dataTable>
+	
+	
+	
+	
+	</h:form>
+	
+	
+	
 
 </h:body>
 
