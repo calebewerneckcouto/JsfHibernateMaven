@@ -20,7 +20,10 @@ public class FinanceiroUser {
 	private Long id;
 	@Temporal(TemporalType.DATE)
 	private Date data;
-	
+
+	@Column(nullable = false)
+	private String nome;
+
 	@Column(nullable = false)
 	private String descricao;
 	@Column(nullable = false)
@@ -35,7 +38,7 @@ public class FinanceiroUser {
 		return id;
 	}
 
-		public void setId(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -75,6 +78,14 @@ public class FinanceiroUser {
 		return valor;
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
@@ -98,8 +109,9 @@ public class FinanceiroUser {
 
 	@Override
 	public String toString() {
-		return "FinanceiroUser [id=" + id + ", data=" + data + ", descricao=" + descricao + ", valor=" + valor
-				+ ", status=" + status + ", usuarioPessoa=" + usuarioPessoa + "]";
+		return "FinanceiroUser [id=" + id + ", data=" + data + ", nome=" + nome + ", descricao=" + descricao
+				+ ", valor=" + valor + ", status=" + status + ", usuarioPessoa=" + usuarioPessoa + "]";
 	}
 
+	
 }

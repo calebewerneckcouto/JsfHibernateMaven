@@ -6,6 +6,21 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
+
+ <style>
+        .centered-column {
+            text-align: center;
+        }
+
+        .blue-column {
+            background-color: dark-gray;
+            color: Black; /* Para o texto dentro da coluna */
+        }
+
+        .large-text {
+            font-size: 24px;
+        }
+    </style>
 </h:head>
 
 
@@ -133,6 +148,13 @@
 			
 			
 			
+			<p:column style="width:150px;">
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{financeiro.nome}" />
+			</p:column>
+			
+			
+			
 			
 			
 			
@@ -198,9 +220,9 @@
 	<p:dataTable value="#{financeiroManagedBean}"  var="financeiro"
 			id="tabelFinanceiro">
 
-			<p:column style="width:150px;">
+			<p:column style="width:150px;" styleClass="centered-column blue-column">
 				<f:facet name="header">Total Gastos</f:facet>
-				<h:outputText value="#{financeiro.totalGastos}" />
+				<h:outputText value="#{financeiro.totalGastos}" styleClass="large-text" />
 			</p:column>
 	
 	

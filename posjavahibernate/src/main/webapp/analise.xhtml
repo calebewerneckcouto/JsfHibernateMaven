@@ -6,6 +6,22 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
+
+<style>
+        .centered-column {
+            text-align: center;
+        }
+
+        .blue-column {
+            background-color: dark-gray;
+            color: Black; /* Para o texto dentro da coluna */
+        }
+
+        .large-text {
+            font-size: 24px;
+        }
+    </style>
+
 </h:head>
 
 <h:body>
@@ -50,12 +66,12 @@
 
 				<p:commandButton value="Buscar"
 					actionListener="#{analiseManagedBean.pesquisar}"
-					update="formAnalise" />
+					update="formAnalise :graficogastos" />
 
 
 				<p:commandButton value="Recarregar"
 					actionListener="#{analiseManagedBean.recarregar}"
-					update="formAnalise" />
+					update="formAnalise :graficogastos" />
 
 
 
@@ -78,6 +94,10 @@
 			</p:column>
 
 
+              <p:column style="width:150px;">
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{financeiro.nome}" />
+			</p:column>
 
 
 
@@ -124,26 +144,7 @@
 
 	</h:form>
 
-	<h:form id="formgastos">
-
-		<p:dataTable value="#{analiseManagedBean}" var="analise">
-
-			<p:column style="width:150px;">
-				<f:facet name="header">Total Gastos</f:facet>
-				<h:outputText value="#{analise.totalGastos}" />
-			</p:column>
-
-
-
-
-		</p:dataTable>
-
-
-
-
-
-	</h:form>
-
+	
 
 <p:chart type="bar" model="#{analiseManagedBean.barChartModel}"
 	id="graficogastos" />

@@ -1,7 +1,9 @@
 package managedBean;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -25,6 +27,8 @@ public class AnaliseManagedBean {
 	
 	private UsuarioPessoa user = new UsuarioPessoa();
 	
+	private FinanceiroUser financeiroUser = new FinanceiroUser();
+	
 	String campoPesquisa;
 	
 	private BarChartModel barChartModel = new BarChartModel();
@@ -35,6 +39,8 @@ public class AnaliseManagedBean {
 		
 		
 		
+		
+       
 	
 		
 		lista = daoFinanceiro.listar(FinanceiroUser.class);
@@ -45,49 +51,62 @@ public class AnaliseManagedBean {
 	}
 	
 	
+	private Map<String, Double> calcularTotalPorStatus(List<FinanceiroUser> lista) {
+	    Map<String, Double> totalPorStatus = new HashMap<>();
+
+	    for (FinanceiroUser financeiroUser : lista) {
+	    	
+	        String status = financeiroUser.getStatus();
+	        double valor = financeiroUser.getValor();
+
+	        totalPorStatus.put(status, totalPorStatus.getOrDefault(status, 0.0) + valor);
+	    }
+
+	    return totalPorStatus;
+	}
+
 	private void montarGrafico() {
-		barChartModel =  new BarChartModel();
+	    barChartModel = new BarChartModel();
 
-		ChartSeries gastos = new ChartSeries();
+	    ChartSeries gastos = new ChartSeries();
+	    Map<String, Double> totalPorStatus = calcularTotalPorStatus(lista);
 
-		for (FinanceiroUser financeiroUser : lista) {
+	    for (Map.Entry<String, Double> entry : totalPorStatus.entrySet()) {
+	        gastos.set(entry.getKey(), entry.getValue());
+	    }
 
-			gastos.set(financeiroUser.getStatus(), financeiroUser.getValor());
-
-		}
-		barChartModel.addSeries(gastos);
-		barChartModel.setTitle("Gráfico de Gastos");
+	    barChartModel.addSeries(gastos);
+	    barChartModel.setTitle("Gráfico de Gastos");
 	}
 
 	
 	
+	public void mudanome() {
+		
+		
+		financeiroUser.setNome(user.getNome());
+		
 	
-public double getTotalGastos() {
-		
-		lista = daoFinanceiro.listar(FinanceiroUser.class);
-		
-		double total = 0.0;
 		
 		
-		for(FinanceiroUser financeiro : lista) {
-			total += financeiro.getValor();
-		}
-		
-		return total;
-		
-}
+	}
+	
+	
+
 	
 	
 	
 	
 	public void recarregar() {
 		lista = daoFinanceiro.listar(FinanceiroUser.class);
+		montarGrafico();
 	}
 	
 	
 public void pesquisar() {
 		
 		lista = daoFinanceiro.pesquisar(campoPesquisa);
+		montarGrafico();
 	
 		
 	}
@@ -143,6 +162,16 @@ public void pesquisar() {
 
 	public void setBarChartModel(BarChartModel barChartModel) {
 		this.barChartModel = barChartModel;
+	}
+
+
+	public FinanceiroUser getFinanceiroUser() {
+		return financeiroUser;
+	}
+
+
+	public void setFinanceiroUser(FinanceiroUser financeiroUser) {
+		this.financeiroUser = financeiroUser;
 	}
 	
 	
