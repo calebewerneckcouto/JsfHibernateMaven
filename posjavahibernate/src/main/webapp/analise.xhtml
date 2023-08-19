@@ -39,7 +39,7 @@
 		<p:panel header="Consultar Gastos">
 
 			<h:panelGrid columns="3">
-				<h:outputLabel value="Pesquisa Gastos:" />
+				
 
 
 
@@ -58,10 +58,10 @@
 					<f:selectItem itemValue="Cartão Alelo Alimentação"
 						itemLabel="Cartão Alelo Alimentação" />
 				</p:selectOneMenu>
+				
 
-
-
-
+            
+                 
 
 
 				<p:commandButton value="Buscar"
@@ -75,15 +75,65 @@
 
 
 
+			</h:panelGrid>
+		</p:panel>
+		
+	</h:form>
+	
+	
+	
+<h:form>
+		<p:panel>
+
+			<h:panelGrid columns="3">
+				
 
 
 
+								<p:outputLabel  value="Nome:"  />
+								<p:inputText  value="#{analiseManagedBean.campoPesquisa}"  />
+                                          
+            
+                 
 
+
+				<p:commandButton value="Buscar"
+					actionListener="#{analiseManagedBean.pesquisarpornome}"
+					update="formAnalise :graficogastos" />
+
+
+				
 
 
 			</h:panelGrid>
 		</p:panel>
+		
 	</h:form>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<h:form id="formAnalise">
 		<p:dataTable value="#{analiseManagedBean.lista}" var="financeiro"
 			id="tabelAnalise">
@@ -148,6 +198,8 @@
 
 <p:chart type="bar" model="#{analiseManagedBean.barChartModel}"
 	id="graficogastos" />
+	
+	
 
 
 </h:body>

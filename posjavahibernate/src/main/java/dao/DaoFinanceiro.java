@@ -21,6 +21,14 @@ public class DaoFinanceiro<E> extends DaoGeneric<FinanceiroUser> {
 		Query query = super.getEntityManager().createQuery("from FinanceiroUser where status like '%"+campoPesquisa+"%' ");
 		return query.getResultList();
 	}
+	
+	
+	
+	public List<FinanceiroUser> pesquisarnome(String campoPesquisa) {
+		Query query = super.getEntityManager().createQuery("from FinanceiroUser where nome like '%"+campoPesquisa+"%' ");
+		return query.getResultList();
+	}
+
 
 	
 	

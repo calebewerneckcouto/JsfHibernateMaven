@@ -44,11 +44,39 @@ public class AnaliseManagedBean {
 	
 		
 		lista = daoFinanceiro.listar(FinanceiroUser.class);
+		
 		montarGrafico();
+		montarGraficonome();
 		
 		
 		
 	}
+	
+	
+	private Map<String, Double> calcularTotalPorNome(List<FinanceiroUser> lista) {
+	    Map<String, Double> totalPornome = new HashMap<>();
+
+	    for (FinanceiroUser financeiroUser : lista) {
+	    	
+	        String nome = financeiroUser.getNome();
+	        double valor = financeiroUser.getValor();
+
+	        totalPornome.put(nome, totalPornome.getOrDefault(nome, 0.0) + valor);
+	    }
+
+	    return totalPornome;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	private Map<String, Double> calcularTotalPorStatus(List<FinanceiroUser> lista) {
@@ -80,6 +108,20 @@ public class AnaliseManagedBean {
 	}
 
 	
+	private void montarGraficonome() {
+	    barChartModel = new BarChartModel();
+
+	    ChartSeries nomes = new ChartSeries();
+	    Map<String, Double> totalPornome = calcularTotalPorNome(lista);
+
+	    for (Map.Entry<String, Double> entry : totalPornome.entrySet()) {
+	        nomes.set(entry.getKey(), entry.getValue());
+	    }
+
+	    barChartModel.addSeries(nomes);
+	    barChartModel.setTitle("Gráfico de Gastos");
+	}
+
 	
 	
 	
@@ -91,16 +133,29 @@ public class AnaliseManagedBean {
 	public void recarregar() {
 		lista = daoFinanceiro.listar(FinanceiroUser.class);
 		montarGrafico();
+		montarGraficonome();
 	}
 	
 	
 public void pesquisar() {
 		
 		lista = daoFinanceiro.pesquisar(campoPesquisa);
+		
 		montarGrafico();
+		
 	
 		
 	}
+
+
+public void pesquisarpornome() {
+	
+	lista = daoFinanceiro.pesquisarnome(campoPesquisa);
+	
+	montarGraficonome();
+}
+
+
 	
 	
 
@@ -159,6 +214,9 @@ public void pesquisar() {
 	public FinanceiroUser getFinanceiroUser() {
 		return financeiroUser;
 	}
+	
+	
+	
 
 
 	public void setFinanceiroUser(FinanceiroUser financeiroUser) {
