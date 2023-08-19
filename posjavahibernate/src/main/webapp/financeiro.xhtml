@@ -8,7 +8,26 @@
 <h:head>
 </h:head>
 
-<h:body>
+<SCRIPT type="text/javascript">
+
+
+function onPageLoad(){
+	
+	var usuario = document.getEmentById('formulario:usuario');
+	var nomeinput = usuario.textContent;
+
+	var nome = document.getEmentById('formulario:nome');
+	nome.value = nomeinput;
+
+	
+}
+
+
+</SCRIPT>
+
+
+
+<h:body onload="onPageLoad()"   >
 	<h:form>
 		<p:breadCrumb>
 			<p:menuitem />
@@ -25,7 +44,13 @@
 		<h:panelGrid columns="2">
 
 			<p:outputLabel>Usuario: </p:outputLabel>
-			<p:outputLabel value="#{financeiroManagedBean.user.nome}" />
+			<p:outputLabel id="usuario"   value="#{financeiroManagedBean.user.nome}" />
+			
+			<p:outputLabel>Nome: </p:outputLabel>
+			<p:inputText  id="nome"   value="#{financeiroManagedBean.financeiroUser.nome}" />
+			
+			
+			
 
 
 
@@ -98,7 +123,7 @@
 		<br />
 
 		<p:commandButton value="Salvar"
-			action="#{financeiroManagedBean.salvar}" ajax="false"></p:commandButton>
+			action="#{financeiroManagedBean.salvar}" ajax="false"    ></p:commandButton>
 			
 			
 			<p:commandButton value="Novo" immediate="true"
@@ -123,6 +148,17 @@
 				<f:facet name="header">Id</f:facet>
 				<h:outputText value="#{financeiro.id}" />
 			</p:column>
+			
+			<p:column style="width:150px;">
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{financeiro.nome}" />
+			</p:column>
+			
+			
+			
+			
+			
+			
 
 
 			<p:column style="width:150px;">

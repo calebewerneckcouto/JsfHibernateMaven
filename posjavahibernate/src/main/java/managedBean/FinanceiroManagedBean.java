@@ -41,6 +41,7 @@ public class FinanceiroManagedBean {
 		String coduser = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
 				.get("codigouser");
 		user = daoUser.pesquisar(Long.parseLong(coduser), UsuarioPessoa.class);
+		
 
 		
 
@@ -61,11 +62,17 @@ public class FinanceiroManagedBean {
 		daoFinanceiro.salvar(financeiroUser);
 		financeiroUser = new FinanceiroUser();
 		user = daoUser.pesquisar(user.getId(), UsuarioPessoa.class);
+	
+		
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação: ", "Salvo com sucesso!"));
 
 		return "";
 	}
+	
+	
+	
+	
 
 	public String removeFinanceiro() throws Exception {
 

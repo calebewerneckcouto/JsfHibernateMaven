@@ -20,6 +20,8 @@ public class FinanceiroUser {
 	private Long id;
 	@Temporal(TemporalType.DATE)
 	private Date data;
+	@Column(nullable = false)
+	private String nome;
 
 	@Column(nullable = false)
 	private String descricao;
@@ -33,6 +35,14 @@ public class FinanceiroUser {
 
 	public Long getId() {
 		return id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public void setId(Long id) {
