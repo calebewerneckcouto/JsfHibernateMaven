@@ -30,6 +30,7 @@ public class AnaliseManagedBean {
 	private FinanceiroUser financeiroUser = new FinanceiroUser();
 	
 	String campoPesquisa;
+	String campoPesquisanome;
 	
 	private BarChartModel barChartModel = new BarChartModel();
 	
@@ -139,7 +140,10 @@ public class AnaliseManagedBean {
 	
 public void pesquisar() {
 		
-		lista = daoFinanceiro.pesquisar(campoPesquisa);
+		lista = daoFinanceiro.pesquisar(campoPesquisa, campoPesquisanome);
+		
+		
+		
 		
 		montarGrafico();
 		
@@ -148,15 +152,6 @@ public void pesquisar() {
 	}
 
 
-public void pesquisarpornome() {
-	
-	lista = daoFinanceiro.pesquisarnome(campoPesquisa);
-	
-	montarGraficonome();
-}
-
-
-	
 	
 
 	public List<FinanceiroUser> getLista() {
@@ -221,6 +216,16 @@ public void pesquisarpornome() {
 
 	public void setFinanceiroUser(FinanceiroUser financeiroUser) {
 		this.financeiroUser = financeiroUser;
+	}
+
+
+	public String getCampoPesquisanome() {
+		return campoPesquisanome;
+	}
+
+
+	public void setCampoPesquisanome(String campoPesquisanome) {
+		this.campoPesquisanome = campoPesquisanome;
 	}
 	
 	

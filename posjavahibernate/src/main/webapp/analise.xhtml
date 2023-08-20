@@ -7,20 +7,20 @@
 
 <h:head>
 
-<style>
-        .centered-column {
-            text-align: center;
-        }
+	<style>
+.centered-column {
+	text-align: center;
+}
 
-        .blue-column {
-            background-color: dark-gray;
-            color: Black; /* Para o texto dentro da coluna */
-        }
+.blue-column {
+	background-color: dark-gray;
+	color: Black; /* Para o texto dentro da coluna */
+}
 
-        .large-text {
-            font-size: 24px;
-        }
-    </style>
+.large-text {
+	font-size: 24px;
+}
+</style>
 
 </h:head>
 
@@ -38,15 +38,15 @@
 	<h:form>
 		<p:panel header="Consultar Gastos">
 
-			<h:panelGrid columns="3">
-				
+			<h:panelGrid columns="6">
+
 
 
 
 				<p:selectOneMenu value="#{analiseManagedBean.campoPesquisa}"
 					required="true" requiredMessage="Selecione uma opção">
 
-
+					
 					<f:selectItem itemValue="Cartão de Crédito"
 						itemLabel="Cartão de Crédito" />
 					<f:selectItem itemValue="Cartão de Débito"
@@ -58,10 +58,12 @@
 					<f:selectItem itemValue="Cartão Alelo Alimentação"
 						itemLabel="Cartão Alelo Alimentação" />
 				</p:selectOneMenu>
-				
 
-            
-                 
+				<p:outputLabel value="Nome:" />
+				<p:inputText value="#{analiseManagedBean.campoPesquisanome}" />
+
+
+
 
 
 				<p:commandButton value="Buscar"
@@ -77,63 +79,33 @@
 
 			</h:panelGrid>
 		</p:panel>
-		
+
 	</h:form>
-	
-	
-	
-<h:form>
-		<p:panel>
-
-			<h:panelGrid columns="3">
-				
 
 
 
-								<p:outputLabel  value="Nome:"  />
-								<p:inputText  value="#{analiseManagedBean.campoPesquisa}"  />
-                                          
-            
-                 
 
 
-				<p:commandButton value="Buscar"
-					actionListener="#{analiseManagedBean.pesquisarpornome}"
-					update="formAnalise :graficogastos" />
 
 
-				
 
 
-			</h:panelGrid>
-		</p:panel>
-		
-	</h:form>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<h:form id="formAnalise">
 		<p:dataTable value="#{analiseManagedBean.lista}" var="financeiro"
 			id="tabelAnalise">
@@ -144,7 +116,7 @@
 			</p:column>
 
 
-              <p:column style="width:150px;">
+			<p:column style="width:150px;">
 				<f:facet name="header">Nome</f:facet>
 				<h:outputText value="#{financeiro.nome}" />
 			</p:column>
@@ -194,12 +166,12 @@
 
 	</h:form>
 
-	
 
-<p:chart type="bar" model="#{analiseManagedBean.barChartModel}"
-	id="graficogastos" />
-	
-	
+
+	<p:chart type="bar" model="#{analiseManagedBean.barChartModel}"
+		id="graficogastos" />
+
+
 
 
 </h:body>
