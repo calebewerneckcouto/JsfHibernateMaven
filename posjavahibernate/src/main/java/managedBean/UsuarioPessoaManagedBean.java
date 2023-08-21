@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.model.chart.BarChartModel;
@@ -16,6 +17,8 @@ import dao.DaoEmail;
 import dao.DaoUsuario;
 import model.EmailUser;
 import model.UsuarioPessoa;
+import repository.IDaoUsuarioPessoa;
+import repository.IDaoUsuarioPessoaImpl;
 
 @ManagedBean(name = "usuarioPessoaManagedBean")
 @ViewScoped
@@ -28,6 +31,7 @@ public class UsuarioPessoaManagedBean {
 	private EmailUser emailuser = new EmailUser();
 	private DaoEmail<EmailUser> daoEmail = new DaoEmail<EmailUser>();
 	private String campoPesquisa;
+	private IDaoUsuarioPessoa iDaoUsuarioPessoa = new IDaoUsuarioPessoaImpl();
 
 	@PostConstruct
 	public void init() {
@@ -141,6 +145,23 @@ public class UsuarioPessoaManagedBean {
 	}
 	
 	
+	public String logar() {
+		
+		
+		UsuarioPessoa pessoa  = iDaoUsuarioPessoa.consultarUsuario(usuarioPessoa.getLogin(), usuarioPessoa.getSenha());
+		
+		if(pessoa != null) {
+			
+			
+					
+			return "principal.jsf";
+		}
+		
+		
+		return "index.jsf";
+	}
+	
+	
 	
 
 	public String getCampoPesquisa() {
@@ -150,5 +171,9 @@ public class UsuarioPessoaManagedBean {
 	public void setCampoPesquisa(String campoPesquisa) {
 		this.campoPesquisa = campoPesquisa;
 	}
+	
+	
+	
+	
 
 }
