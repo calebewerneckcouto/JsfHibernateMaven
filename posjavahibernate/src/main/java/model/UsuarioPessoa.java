@@ -23,8 +23,8 @@ public class UsuarioPessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
 	private String nome;
+
 	private String sobrenome;
 	private String login;
 	private String senha;
@@ -89,10 +89,6 @@ public class UsuarioPessoa {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
 	public List<FinanceiroUser> getFinanceiroUsers() {
 		return financeiroUsers;
 	}
@@ -101,8 +97,12 @@ public class UsuarioPessoa {
 		this.financeiroUsers = financeiroUsers;
 	}
 
-	public String setNome(String nome) {
-		return this.nome = nome;
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getSobrenome() {
@@ -130,17 +130,19 @@ public class UsuarioPessoa {
 	}
 
 	@Override
-	public String toString() {
-		return "UsuarioPessoa [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", " + ", login=" + login
-				+ ", senha=" + senha + ", idade=" + idade + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "UsuarioPessoa [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", login=" + login
+				+ ", senha=" + senha + ", sexo=" + sexo + ", idade=" + idade + ", salario=" + salario
+				+ ", telefoneUsers=" + telefoneUsers + ", financeiroUsers=" + financeiroUsers + ", emails=" + emails
+				+ "]";
 	}
 
 	@Override
@@ -159,7 +161,5 @@ public class UsuarioPessoa {
 			return false;
 		return true;
 	}
-	
-	
 
 }

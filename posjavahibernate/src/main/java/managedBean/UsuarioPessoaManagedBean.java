@@ -171,6 +171,38 @@ public class UsuarioPessoaManagedBean {
 	public void setCampoPesquisa(String campoPesquisa) {
 		this.campoPesquisa = campoPesquisa;
 	}
+
+	public DaoUsuario<UsuarioPessoa> getDaoGeneric() {
+		return daoGeneric;
+	}
+
+	public void setDaoGeneric(DaoUsuario<UsuarioPessoa> daoGeneric) {
+		this.daoGeneric = daoGeneric;
+	}
+
+	public DaoEmail<EmailUser> getDaoEmail() {
+		return daoEmail;
+	}
+
+	public void setDaoEmail(DaoEmail<EmailUser> daoEmail) {
+		this.daoEmail = daoEmail;
+	}
+
+	public IDaoUsuarioPessoa getiDaoUsuarioPessoa() {
+		return iDaoUsuarioPessoa;
+	}
+
+	public void setiDaoUsuarioPessoa(IDaoUsuarioPessoa iDaoUsuarioPessoa) {
+		this.iDaoUsuarioPessoa = iDaoUsuarioPessoa;
+	}
+
+	public void setList(List<UsuarioPessoa> list) {
+		this.list = list;
+	}
+
+	public void setBarCharModel(BarChartModel barCharModel) {
+		this.barCharModel = barCharModel;
+	}
 	
 	
 	
