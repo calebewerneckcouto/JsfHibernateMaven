@@ -1,0 +1,14 @@
+/* Estilos gerais para dispositivos móveis */
+@media screen and (max-width: 767px) {
+  /* Ajustar a margem do formulário */
+  #formLogin {
+    margin: 5% 10%;
+  }
+  
+  /* Ajustar largura do botão */
+  .btn {
+    width: 100%;
+  }
+  
+  /* Outros ajustes de estilo conforme necessário */
+}
