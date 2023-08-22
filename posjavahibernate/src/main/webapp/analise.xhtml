@@ -110,41 +110,41 @@
 
 
 	<h:form id="formAnalise">
-		<p:dataTable value="#{analiseManagedBean.lista}" var="financeiro"
+		<b:dataTable value="#{analiseManagedBean.lista}" var="financeiro" pdf="true"
 			id="tabelAnalise">
 
-			<p:column style="width:150px;">
+			<b:column style="width:150px;">
 				<f:facet name="header">Id</f:facet>
 				<h:outputText value="#{financeiro.id}" />
-			</p:column>
+			</b:column>
 
 
-			<p:column style="width:150px;">
+			<b:column style="width:150px;">
 				<f:facet name="header">Nome</f:facet>
 				<h:outputText value="#{financeiro.nome}" />
-			</p:column>
+			</b:column>
 
 
 
 
 
 
-			<p:column style="width:150px;">
+			<b:column style="width:150px;">
 				<f:facet name="header">Data</f:facet>
 
 				<h:outputText value="#{financeiro.data}" />
-			</p:column>
+			</b:column>
 
-			<p:column style="width:150px;">
+			<b:column style="width:150px;">
 				<f:facet name="header">Descrição</f:facet>
 				<h:outputText value="#{financeiro.descricao}" />
-			</p:column>
+			</b:column>
 
 
-			<p:column style="width:150px;">
+			<b:column style="width:150px;">
 				<f:facet name="header">Valor</f:facet>
 				<h:outputText value="#{financeiro.valor}" />
-			</p:column>
+			</b:column>
 
 
 
@@ -154,15 +154,15 @@
 
 
 
-			<p:column style="width:150px;">
+			<b:column style="width:150px;">
 				<f:facet name="header">Status</f:facet>
 				<h:outputText value="#{financeiro.status}" />
-			</p:column>
+			</b:column>
 
 
 
 
-		</p:dataTable>
+		</b:dataTable>
 
 
 
