@@ -19,16 +19,18 @@ public class FinanceiroUser {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@Temporal(TemporalType.DATE)
-	private Date data;
+	private Date dataini;
 
-	
+	@Temporal(TemporalType.DATE)
+	private Date datafim;
+
 	@Column(nullable = false)
 	private String descricao;
 	@Column(nullable = false)
 	private Double valor;
 	@Column(nullable = false)
 	private String status;
-	
+
 	@Column(nullable = false)
 	private String nome;
 
@@ -67,21 +69,35 @@ public class FinanceiroUser {
 		this.usuarioPessoa = usuarioPessoa;
 	}
 
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
 	public Double getValor() {
 		return valor;
 	}
 
-	
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+
+	@Override
+	public String toString() {
+		return "FinanceiroUser [id=" + id + ", dataini=" + dataini + ", datafim=" + datafim + ", descricao=" + descricao
+				+ ", valor=" + valor + ", status=" + status + ", nome=" + nome + ", usuarioPessoa=" + usuarioPessoa
+				+ "]";
+	}
+
+	public Date getDataini() {
+		return dataini;
+	}
+
+	public void setDataini(Date dataini) {
+		this.dataini = dataini;
+	}
+
+	public Date getDatafim() {
+		return datafim;
+	}
+
+	public void setDatafim(Date datafim) {
+		this.datafim = datafim;
 	}
 
 	@Override
@@ -101,13 +117,6 @@ public class FinanceiroUser {
 		return Objects.equals(id, other.id);
 	}
 
-	
-	@Override
-	public String toString() {
-		return "FinanceiroUser [id=" + id + ", data=" + data + ", descricao=" + descricao + ", valor=" + valor
-				+ ", status=" + status + ", nome=" + nome + ", usuarioPessoa=" + usuarioPessoa + "]";
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -116,6 +125,4 @@ public class FinanceiroUser {
 		return this.nome = nome;
 	}
 
-	
-	
 }

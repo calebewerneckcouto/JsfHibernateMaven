@@ -10,33 +10,33 @@
 
 
 
- <style>
-        .centered-column {
-            text-align: center;
-        }
+	<style>
+.centered-column {
+	text-align: center;
+}
 
-        .blue-column {
-            background-color: dark-gray;
-            color: Black; /* Para o texto dentro da coluna */
-        }
+.blue-column {
+	background-color: dark-gray;
+	color: Black; /* Para o texto dentro da coluna */
+}
 
-        .large-text {
-            font-size: 24px;
-        }
-    </style>
+.large-text {
+	font-size: 24px;
+}
+</style>
 </h:head>
 
 
 
 
-<h:body    >
+<h:body>
 	<h:form>
 		<p:breadCrumb>
 			<p:menuitem />
 			<p:menuitem value="Cadastro Usuarios" action="principal.jsf" />
 			<p:menuitem value="Análise Financeira Individual"
 				action="analise.jsf" />
-				<p:menuitem  value="Trocar Usuário"  action="index.jsf" />
+			<p:menuitem value="Trocar Usuário" action="index.jsf" />
 
 		</p:breadCrumb>
 	</h:form>
@@ -46,24 +46,39 @@
 
 		<h:panelGrid columns="2">
 
-			
+
 			<p:outputLabel>Nome: </p:outputLabel>
-			<p:outputLabel id="nome"   value="#{financeiroManagedBean.financeiroUser.nome}" />
-			
-			
-			
+			<p:outputLabel id="nome"
+				value="#{financeiroManagedBean.financeiroUser.nome}" />
 
 
 
-			<p:outputLabel>Data: </p:outputLabel>
 
-			<b:datepicker locale="pt_BR" id="data"
-				value="#{financeiroManagedBean.financeiroUser.data}" required="true"
-				requiredMessage="Informe a Data" timeZone="GMT-03:00">
+
+
+			<p:outputLabel>Data Ini.: </p:outputLabel>
+
+			<b:datepicker locale="en" id="dataini"
+				value="#{financeiroManagedBean.financeiroUser.dataini}"
+				required="true" requiredMessage="Informe a Data">
 
 
 
 			</b:datepicker>
+
+
+
+
+			<p:outputLabel>Data Fin.: </p:outputLabel>
+
+			<b:datepicker locale="en" id="datafim"
+				value="#{financeiroManagedBean.financeiroUser.datafim}"
+				required="true" requiredMessage="Informe a Data">
+
+
+
+			</b:datepicker>
+
 
 
 
@@ -124,20 +139,20 @@
 		<br />
 
 		<p:commandButton value="Salvar"
-			action="#{financeiroManagedBean.salvar}" ajax="false"    ></p:commandButton>
-			
-			
-			<p:commandButton value="Novo" immediate="true"
+			action="#{financeiroManagedBean.salvar}" ajax="false"></p:commandButton>
+
+
+		<p:commandButton value="Novo" immediate="true"
 			action="#{financeiroManagedBean.novo}">
 			<f:ajax execute="@this" render="@form" />
 		</p:commandButton>
 
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
 
 	</h:form>
 
@@ -149,26 +164,31 @@
 				<f:facet name="header">Id</f:facet>
 				<h:outputText value="#{financeiro.id}" />
 			</p:column>
-			
-			
-			
+
+
+
 			<p:column style="width:150px;">
 				<f:facet name="header">Nome</f:facet>
 				<h:outputText value="#{financeiro.nome}" />
 			</p:column>
-			
-			
-			
-			
-			
-			
-			
+
+
+
 
 
 			<p:column style="width:150px;">
-				<f:facet name="header">Data</f:facet>
+				<f:facet name="header">Data Ini.</f:facet>
 
-				<h:outputText value="#{financeiro.data}" />
+				<h:outputText value="#{financeiro.dataini}" />
+			</p:column>
+
+
+
+
+			<p:column style="width:150px;">
+				<f:facet name="header">Data Fin.</f:facet>
+
+				<h:outputText value="#{financeiro.datafim}" />
 			</p:column>
 
 			<p:column style="width:150px;">
@@ -202,46 +222,49 @@
 			<p:column>
 				<f:facet name="header">Delete</f:facet>
 				<h:commandLink immediate="true"
-					action="#{financeiroManagedBean.removeFinanceiro}"  
+					action="#{financeiroManagedBean.removeFinanceiro}"
 					id="botaoremover">
 					<h:graphicImage url="resources/img/excluir.png" width="25"
 						height="25" />
 					<f:setPropertyActionListener value="#{financeiro}"
 						target="#{financeiroManagedBean.financeiroUser}" />
-					<f:ajax execute="botaoremover" render="@form :formulario:msg formtotal"  />
+					<f:ajax execute="botaoremover"
+						render="@form :formulario:msg formtotal" />
 				</h:commandLink>
 			</p:column>
 
 		</p:dataTable>
 	</h:form>
-	
-	
-	
-	<h:form id="formtotal">
-	
 
-	
-	<p:dataTable value="#{financeiroManagedBean}"  var="financeiro"
+
+
+	<h:form id="formtotal">
+
+
+
+		<p:dataTable value="#{financeiroManagedBean}" var="financeiro"
 			id="tabelFinanceiro">
 
-			<p:column style="width:150px;" styleClass="centered-column blue-column">
+			<p:column style="width:150px;"
+				styleClass="centered-column blue-column">
 				<f:facet name="header">Total Gastos</f:facet>
-				<h:outputText value="#{financeiro.totalGastos}" styleClass="large-text" />
+				<h:outputText value="#{financeiro.totalGastos}"
+					styleClass="large-text" />
 			</p:column>
-	
-	
-	
-	
-	
-	</p:dataTable>
-	
-	
-	
-	
+
+
+
+
+
+		</p:dataTable>
+
+
+
+
 	</h:form>
-	
-	
-	
+
+
+
 
 </h:body>
 

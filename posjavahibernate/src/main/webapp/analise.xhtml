@@ -110,8 +110,8 @@
 
 
 	<h:form id="formAnalise">
-		<b:dataTable value="#{analiseManagedBean.lista}" var="financeiro" pdf="true"
-			id="tabelAnalise">
+		<b:dataTable value="#{analiseManagedBean.lista}" var="financeiro"
+			pdf="true" id="tabelAnalise">
 
 			<b:column style="width:150px;">
 				<f:facet name="header">Id</f:facet>
@@ -125,14 +125,20 @@
 			</b:column>
 
 
+			<b:column style="width:150px;">
+				<f:facet name="header">Data Ini.</f:facet>
+
+				<h:outputText value="#{financeiro.dataini}" />
+			</b:column>
+
 
 
 
 
 			<b:column style="width:150px;">
-				<f:facet name="header">Data</f:facet>
+				<f:facet name="header">Data Fin.</f:facet>
 
-				<h:outputText value="#{financeiro.data}" />
+				<h:outputText value="#{financeiro.datafim}" />
 			</b:column>
 
 			<b:column style="width:150px;">
