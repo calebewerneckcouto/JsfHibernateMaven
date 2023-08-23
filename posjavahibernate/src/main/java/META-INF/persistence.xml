@@ -17,7 +17,7 @@
 
 		<properties>
 
-			<!-- Dados de Conexão com Banco de Dados local
+			<!-- Dados de Conexão com Banco de Dados local -->
 
 			<property name="hibernate.connection.driver_class"
 				value="org.postgresql.Driver" />
@@ -31,13 +31,13 @@
 			<property name="hibernate.format_sql" value="false" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			
-			-->
 			
 			
 			
 			
 			
-			<!-- Dados de Conexão com Banco de Dados online 	-->
+			
+			<!-- Dados de Conexão com Banco de Dados online 	
 
 			<property name="hibernate.connection.driver_class"
 				value="org.postgresql.Driver" />
@@ -50,7 +50,7 @@
 			<property name="hibernate.connection.password" value="cwc3d14694899" />
 			<property name="hibernate.format_sql" value="false" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
-			
+			-->
 			
 		
 			

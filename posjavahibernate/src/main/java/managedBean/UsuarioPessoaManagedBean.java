@@ -9,6 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
@@ -145,12 +147,37 @@ public class UsuarioPessoaManagedBean {
 	}
 	
 	
+	public String deslogar() {
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		externalContext.getSessionMap().remove("usuarioLogado");
+
+		HttpServletRequest httpServletRequest = (HttpServletRequest) context
+				.getCurrentInstance().getExternalContext().getRequest();
+
+		httpServletRequest.getSession().invalidate();
+
+		return "index.jsf";
+	}
+
+	
+	
 	public String logar() {
 		
 		
 		UsuarioPessoa pessoa  = iDaoUsuarioPessoa.consultarUsuario(usuarioPessoa.getLogin(), usuarioPessoa.getSenha());
 		
 		if(pessoa != null) {
+			
+			
+			FacesContext context = FacesContext.getCurrentInstance();
+			ExternalContext externalContext = context.getExternalContext();
+			
+			HttpServletRequest req = (HttpServletRequest) externalContext.getRequest();
+			HttpSession session = req.getSession();
+			
+			session.setAttribute("usuariologado", pessoa);
 			
 			
 					
