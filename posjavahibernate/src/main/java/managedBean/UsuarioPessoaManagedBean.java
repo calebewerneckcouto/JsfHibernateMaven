@@ -177,7 +177,7 @@ public class UsuarioPessoaManagedBean {
 			HttpServletRequest req = (HttpServletRequest) externalContext.getRequest();
 			HttpSession session = req.getSession();
 			
-			session.setAttribute("usuariologado", pessoa);
+			session.setAttribute("usuarioLogado", pessoa);
 			
 			
 					
