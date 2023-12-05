@@ -56,10 +56,10 @@
 
 
 
-			<p:outputLabel>Data Ini.: </p:outputLabel>
+			<p:outputLabel>Data: </p:outputLabel>
 
-			<b:datepicker locale="en" id="dataini"
-				value="#{financeiroManagedBean.financeiroUser.dataini}"
+			<b:datepicker locale="en" id="data"
+				value="#{financeiroManagedBean.financeiroUser.data}"
 				required="true" requiredMessage="Informe a Data">
 
 
@@ -69,15 +69,7 @@
 
 
 
-			<p:outputLabel>Data Fin.: </p:outputLabel>
-
-			<b:datepicker locale="en" id="datafim"
-				value="#{financeiroManagedBean.financeiroUser.datafim}"
-				required="true" requiredMessage="Informe a Data">
-
-
-
-			</b:datepicker>
+		
 
 
 
@@ -114,7 +106,7 @@
 
 			<p:outputLabel for="valorInput">Valor:</p:outputLabel>
 			<p:inputText id="valorInput"
-				value="#{financeiroManagedBean.financeiroUser.valor}"
+				value="#{financeiroManagedBean.financeiroUser.valor}" type="boolean"
 				required="true" requiredMessage="Informe o Valor">
 
 
@@ -177,19 +169,15 @@
 
 
 			<p:column style="width:150px;">
-				<f:facet name="header">Data Ini.</f:facet>
+				<f:facet name="header">Data</f:facet>
 
-				<h:outputText value="#{financeiro.dataini}" />
+				<h:outputText value="#{financeiro.data}" />
 			</p:column>
 
 
 
 
-			<p:column style="width:150px;">
-				<f:facet name="header">Data Fin.</f:facet>
-
-				<h:outputText value="#{financeiro.datafim}" />
-			</p:column>
+			
 
 			<p:column style="width:150px;">
 				<f:facet name="header">Descrição</f:facet>

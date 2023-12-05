@@ -22,7 +22,7 @@ import model.UsuarioPessoa;
 import repository.IDaoUsuarioPessoa;
 import repository.IDaoUsuarioPessoaImpl;
 
-@ManagedBean(name = "usuarioPessoaManagedBean")
+@ManagedBean(name  = "usuarioPessoaManagedBean")
 @ViewScoped
 public class UsuarioPessoaManagedBean {
 
@@ -117,12 +117,21 @@ public class UsuarioPessoaManagedBean {
 	}
 
 	public void addEmail() {
-		emailuser.setUsuarioPessoa(usuarioPessoa);
-		emailuser = daoEmail.updateMerge(emailuser);
-		usuarioPessoa.getEmails().add(emailuser);
-		emailuser = new EmailUser();
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Resultado..", "Salvo com sucesso!"));
+	    // Verifica se o campo de e-mail está vazio
+	    if (emailuser.getEmail() == null || emailuser.getEmail().trim().isEmpty()) {
+	        FacesContext.getCurrentInstance().addMessage(null,
+	                new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Por favor, preencha o campo de e-mail."));
+	        return; // Não continua a execução do método se o campo estiver vazio
+	    }
+
+	    // Restante da lógica para adicionar o e-mail
+	    emailuser.setUsuarioPessoa(usuarioPessoa);
+	    emailuser = daoEmail.updateMerge(emailuser);
+	    usuarioPessoa.getEmails().add(emailuser);
+	    emailuser = new EmailUser();
+
+	    FacesContext.getCurrentInstance().addMessage(null,
+	            new FacesMessage(FacesMessage.SEVERITY_INFO, "Resultado..", "Salvo com sucesso!"));
 	}
 
 	public void removerEmail() throws Exception {

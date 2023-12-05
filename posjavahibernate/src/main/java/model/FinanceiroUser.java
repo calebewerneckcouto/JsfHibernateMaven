@@ -19,10 +19,9 @@ public class FinanceiroUser {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@Temporal(TemporalType.DATE)
-	private Date dataini;
+	private Date data;
 
-	@Temporal(TemporalType.DATE)
-	private Date datafim;
+	
 
 	@Column(nullable = false)
 	private String descricao;
@@ -77,27 +76,14 @@ public class FinanceiroUser {
 		this.valor = valor;
 	}
 
-	@Override
-	public String toString() {
-		return "FinanceiroUser [id=" + id + ", dataini=" + dataini + ", datafim=" + datafim + ", descricao=" + descricao
-				+ ", valor=" + valor + ", status=" + status + ", nome=" + nome + ", usuarioPessoa=" + usuarioPessoa
-				+ "]";
+	
+	
+	public Date getData() {
+		return data;
 	}
 
-	public Date getDataini() {
-		return dataini;
-	}
-
-	public void setDataini(Date dataini) {
-		this.dataini = dataini;
-	}
-
-	public Date getDatafim() {
-		return datafim;
-	}
-
-	public void setDatafim(Date datafim) {
-		this.datafim = datafim;
+	public void setData(Date data) {
+		this.data = data;
 	}
 
 	@Override
@@ -124,5 +110,13 @@ public class FinanceiroUser {
 	public String setNome(String nome) {
 		return this.nome = nome;
 	}
+
+	@Override
+	public String toString() {
+		return "FinanceiroUser [id=" + id + ", data=" + data + ", descricao=" + descricao + ", valor=" + valor
+				+ ", status=" + status + ", nome=" + nome + ", usuarioPessoa=" + usuarioPessoa + "]";
+	}
+	
+	
 
 }

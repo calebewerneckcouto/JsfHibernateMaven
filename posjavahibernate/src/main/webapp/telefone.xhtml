@@ -31,11 +31,20 @@
 			<p:outputLabel>Usuario: </p:outputLabel>
 			<p:outputLabel value="#{telefoneManagedBean.user.nome}" />
 
-			<p:outputLabel>Número:</p:outputLabel>
-			<p:inputText value="#{telefoneManagedBean.telefone.numero}" required="true"  requiredMessage="Numero obrigatório"/>
+			<p:outputLabel for="numeroTelefone">Número:</p:outputLabel>
+<p:inputMask id="numeroTelefone" value="#{telefoneManagedBean.telefone.numero}" mask="(99) 9999-9999" required="true" requiredMessage="Número obrigatório"/>
+<p:message for="numeroTelefone" />
 
-			<p:outputLabel>Tipo:</p:outputLabel>
-			<p:inputText value="#{telefoneManagedBean.telefone.tipo}" required="true" requiredMessage="Tipo obrigatório"/>
+			<br/>
+			
+			<p:outputLabel for="tipoTelefone">Tipo:</p:outputLabel>
+<p:selectOneMenu id="tipoTelefone" value="#{telefoneManagedBean.telefone.tipo}" required="true" requiredMessage="Tipo obrigatório">
+    <f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+    <f:selectItem itemValue="Celular" itemLabel="Celular" />
+    <f:selectItem itemValue="Casa" itemLabel="Casa" />
+</p:selectOneMenu>
+<p:message for="tipoTelefone" />
+
 
 		</h:panelGrid>
 		<br />
