@@ -59,6 +59,7 @@ public class FinanceiroManagedBean {
 	}
 	
 	
+	
 	public String novo() {
 		
 		financeiroUser = new FinanceiroUser();
