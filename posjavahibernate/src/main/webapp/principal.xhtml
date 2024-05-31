@@ -6,91 +6,153 @@
 
 <h:head>
 
+<style>
 
+	
+
+chart{
+       
+       width:auto;
+       }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+        .form-container {
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 54%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 450px;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+        .panel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+        }
+        
+         @media (max-width: 1200px) {
+            .form-container {
+                width: 70%;
+            }
+            chat{
+             width: 1200px;
+            }
+            .panel-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        
+          @media (max-width: 520px) {
+            .form-container {
+                width: 70%;
+            }
+            chat{
+             width: 520px;
+            }
+            .panel-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
 
 
 </h:head>
 
 <h:body>
+    <h:form>
+        <p:breadCrumb>
+            <p:menuitem />
+            <p:menuitem value="Cadastro Usuarios" action="principal.jsf" />
+            <p:menuitem value="Análise Financeira Individual" action="analise.jsf" />
+            <p:menuitem value="Trocar Usuário" action="#{usuarioPessoaManagedBean.deslogar}" />
+        </p:breadCrumb>
+    </h:form>
 
-	<h:form>
+    <h:form id="formulario" class="form-container">
+        <p:growl autoUpdate="true" showDetail="true" />
+        <br />
+        <br />
+        
+        <p:panelGrid columns="4" styleClass="panel-grid">
+            <p:outputLabel>ID:</p:outputLabel>
+            <p:inputText readonly="true" value="#{usuarioPessoaManagedBean.usuarioPessoa.id}" />
 
-		<p:breadCrumb>
-			<p:menuitem />
-			<p:menuitem value="Cadastro Usuarios" action="principal.jsf" />
-			<p:menuitem value="Análise Financeira Individual"
-				action="analise.jsf" />
-			<p:menuitem value="Trocar Usuário"
-				action="#{usuarioPessoaManagedBean.deslogar}" />
+            <p:outputLabel>Nome:</p:outputLabel>
+            <p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.nome}" required="true" requiredMessage="Informe o nome!" />
 
-		</p:breadCrumb>
-	</h:form>
+            <p:outputLabel>Sobrenome:</p:outputLabel>
+            <p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.sobrenome}" required="true" requiredMessage="Informe o sobrenome!" />
 
-	<h:form id="formulario">
-		<p:growl autoUpdate="true" showDetail="true" />
-		<br />
-		<br />
-		<p:panelGrid columns="2">
+            <p:outputLabel for="idade">Idade:</p:outputLabel>
+            <p:inputText id="idade" value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}" type="number" />
 
-			<p:outputLabel>ID:</p:outputLabel>
-			<p:inputText readonly="true"
-				value="#{usuarioPessoaManagedBean.usuarioPessoa.id}" />
+            <p:outputLabel for="salario">Salário:</p:outputLabel>
+            <p:inputText id="salario" value="#{usuarioPessoaManagedBean.usuarioPessoa.salario}" type="number" />
 
-			<p:outputLabel>Nome:</p:outputLabel>
-			<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.nome}"
-				required="true" requiredMessage="Informe o nome!" />
+            <p:outputLabel>Sexo:</p:outputLabel>
+            <p:selectOneMenu value="#{usuarioPessoaManagedBean.usuarioPessoa.sexo}">
+                <f:selectItem itemValue="MASCULINO" itemLabel="Masculino" />
+                <f:selectItem itemValue="FEMININO" itemLabel="Feminino" />
+            </p:selectOneMenu>
 
-			<p:outputLabel>Sobrenome:</p:outputLabel>
-			<p:inputText
-				value="#{usuarioPessoaManagedBean.usuarioPessoa.sobrenome}"
-				required="true" requiredMessage="Informe o sobrenome!" />
+            <p:outputLabel>Login:</p:outputLabel>
+            <p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.login}" />
 
-			<p:outputLabel for="idade">Idade:</p:outputLabel>
-<p:inputText id="idade" value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}" type="number" />
+            <p:outputLabel>Senha:</p:outputLabel>
+            <p:password value="#{usuarioPessoaManagedBean.usuarioPessoa.senha}" />
+        </p:panelGrid>
 
-<p:outputLabel for="salario">Salário:</p:outputLabel>
-<p:inputText id="salario" value="#{usuarioPessoaManagedBean.usuarioPessoa.salario}" type="number" />
+        <br />
+        <br />
+        <p:commandButton value="Salvar" ajax="false" action="#{usuarioPessoaManagedBean.salvar}" />
 
+        <p:commandButton value="Novo" immediate="true" action="#{usuarioPessoaManagedBean.novo}">
+            <f:ajax execute="@this" render="@form" />
+        </p:commandButton>
 
-
-			<p:outputLabel>Sexo:</p:outputLabel>
-			<p:selectOneMenu
-				value="#{usuarioPessoaManagedBean.usuarioPessoa.sexo}">
-				<f:selectItem itemValue="MASCULINO" itemLabel="Masculino" />
-				<f:selectItem itemValue="FEMININO" itemLabel="Feminino" />
-			</p:selectOneMenu>
-
-
-			<p:outputLabel>Login:</p:outputLabel>
-			<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.login}" />
-
-			<p:outputLabel>Senha:</p:outputLabel>
-			<p:password value="#{usuarioPessoaManagedBean.usuarioPessoa.senha}" />
-
-		</p:panelGrid>
-
-		<br />
-		<br />
-		<p:commandButton value="Salvar" ajax="false"
-			action="#{usuarioPessoaManagedBean.salvar}" />
-
-		<p:commandButton value="Novo" immediate="true"
-			action="#{usuarioPessoaManagedBean.novo}">
-			<f:ajax execute="@this" render="@form" />
-		</p:commandButton>
-
-
-
-
-
-
-
-
-		<br />
-		<br />
-
-	</h:form>
-
+        <br />
+        <br />
+    </h:form>
 
 	<h:form>
 		<p:panel header="Consultar Usuario">
@@ -236,9 +298,10 @@
 		</p:dialog>
 
 	</h:form>
+	<br/>
 
 	<p:chart type="bar" model="#{usuarioPessoaManagedBean.barCharModel}"
-		id="graficosalario" />
+		id="graficosalario"  />
 
 
 
