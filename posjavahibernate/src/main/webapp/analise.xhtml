@@ -25,6 +25,10 @@
 .large-text {
 	font-size: 24px;
 }
+
+.commandButton{
+display:flex;
+}
 </style>
 
 </h:head>
@@ -70,11 +74,11 @@
 
 
 
-				<p:commandButton value="Buscar"
+				<p:commandButton value="Buscar" style="padding:5px"
 					actionListener="#{analiseManagedBean.pesquisar}"
 					update="formAnalise :graficogastos" />
 
-
+                    <br/>
 				<p:commandButton value="Recarregar"
 					actionListener="#{analiseManagedBean.recarregar}"
 					update="formAnalise :graficogastos" />
